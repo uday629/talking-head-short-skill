@@ -1,0 +1,1309 @@
+{
+ "source": "talking_head_genre_editing_matrix.xlsx",
+ "genres": [
+  {
+   "no": "1",
+   "niche": "Finance / Personal Finance",
+   "broll": "Real budgeting situations; bills, receipts, salary day, banking/payment actions, expense tracking, calculator, everyday purchases. Use anonymized or clearly labelled mock data.",
+   "motion": "Clean 2D infographic; animated income\u2192expense flow; category bars; budget buckets; number counters; simple before/after comparisons; subtle UI callouts.",
+   "palette_text": "Primary #142B45 (trust navy); Secondary #1F8A70 (financial growth); 3rd #E8E2D6 (warm neutral); 4th #D95D39 (risk/attention, sparingly).",
+   "fonts_text": "HEADLINE: Manrope (700\u2013800) | BODY: Inter (400\u2013600) | NUMBERS: Inter (600\u2013700, tabular figures). Google Fonts.",
+   "music": "Minimal lo-fi, warm piano, understated electronic pulse; calm and practical, not luxury-hype.",
+   "sfx": "Calculator taps, receipt/paper rustle, soft UI clicks, subtle ticks; restrained transition swishes.",
+   "delivery": "Calm authority, practical, reassuring, non-judgmental. Never shame people about money.",
+   "hook": "Specific money pain point, surprising expense, myth-vs-fact, small actionable promise.",
+   "rhythm": "Medium pace; punch-in on key figures; hold charts long enough to read; clean cuts and subtle wipes.",
+   "notes": "Show currency, period and assumptions. Label illustrative numbers. Avoid guaranteed returns, fake account screens and get-rich-quick visuals.",
+   "palette": {
+    "primary": {
+     "hex": "#142B45",
+     "name": "trust navy"
+    },
+    "secondary": {
+     "hex": "#1F8A70",
+     "name": "financial growth"
+    },
+    "3rd": {
+     "hex": "#E8E2D6",
+     "name": "warm neutral"
+    },
+    "4th": {
+     "hex": "#D95D39",
+     "name": "risk/attention, sparingly"
+    }
+   },
+   "fonts": {
+    "headline": {
+     "family": "Manrope",
+     "weights": "700\u2013800"
+    },
+    "body": {
+     "family": "Inter",
+     "weights": "400\u2013600"
+    },
+    "numbers": {
+     "family": "Inter",
+     "weights": "600\u2013700, tabular figures"
+    }
+   }
+  },
+  {
+   "no": "2",
+   "niche": "Investing / Stock Market / Crypto Education",
+   "broll": "Verified market context, dated charts, company/product footage, exchange screens, risk examples, analyst at work. Make demo data visibly illustrative.",
+   "motion": "2D candlestick/chart callouts; trendline reveals; risk/reward scale; portfolio allocation; scenario comparison; timeline; restrained UI animation.",
+   "palette_text": "Primary #101820 (charcoal); Secondary #2D6A8A (analytical blue); 3rd #D9E2E8 (cool light grey); 4th #E0A526 (caution amber). Red/green only for semantically correct market movement.",
+   "fonts_text": "HEADLINE: Space Grotesk (600\u2013700) | BODY: IBM Plex Sans (400\u2013600) | NUMBERS: IBM Plex Sans (600\u2013700, tabular figures). Google Fonts.",
+   "music": "Restrained electronic pulse, minimal ambient tension, soft tech percussion; avoid casino-like energy.",
+   "sfx": "Soft data ticks, chart draw, muted alert, restrained digital whoosh; no jackpot sounds.",
+   "delivery": "Measured, skeptical, analytical, composed; never sound certain about uncertain outcomes.",
+   "hook": "Risk reveal, chart misconception, what a metric does/doesn't tell you, scenario question.",
+   "rhythm": "Medium-slow; pause for chart interpretation; animate one data point at a time; avoid rapid chart flashes.",
+   "notes": "Show source and date. Separate fact, opinion and forecast. Avoid personalized buy/sell calls and certainty claims.",
+   "palette": {
+    "primary": {
+     "hex": "#101820",
+     "name": "charcoal"
+    },
+    "secondary": {
+     "hex": "#2D6A8A",
+     "name": "analytical blue"
+    },
+    "3rd": {
+     "hex": "#D9E2E8",
+     "name": "cool light grey"
+    },
+    "4th": {
+     "hex": "#E0A526",
+     "name": "caution amber"
+    }
+   },
+   "fonts": {
+    "headline": {
+     "family": "Space Grotesk",
+     "weights": "600\u2013700"
+    },
+    "body": {
+     "family": "IBM Plex Sans",
+     "weights": "400\u2013600"
+    },
+    "numbers": {
+     "family": "IBM Plex Sans",
+     "weights": "600\u2013700, tabular figures"
+    }
+   }
+  },
+  {
+   "no": "3",
+   "niche": "Business / Entrepreneurship",
+   "broll": "Founder/workspace, product making, packaging, customer journey, team operations, storefront, real business process, service delivery.",
+   "motion": "Funnel, unit economics, process flow, customer journey map, market positioning, revenue/cost stack, case-study timeline, comparison cards.",
+   "palette_text": "Primary #202B35 (graphite); Secondary #2F6B5B (business green); 3rd #F1EDE4 (warm off-white); 4th #E58A3A (action orange).",
+   "fonts_text": "HEADLINE: Manrope (700\u2013800) | BODY: DM Sans (400\u2013600) | METRICS: DM Sans (600\u2013700). Google Fonts.",
+   "music": "Modern corporate groove, mellow upbeat electronic, light percussion; optimistic but grounded.",
+   "sfx": "Keyboard, paper, packaging sounds, subtle UI clicks, light whoosh and soft impact.",
+   "delivery": "Confident, candid, curious; communicate trade-offs and lessons from failure.",
+   "hook": "Unexpected business insight, costly mistake, margin reveal, mini case study.",
+   "rhythm": "Medium-fast; section changes on idea shifts; animate metrics in sequence; avoid flashy transitions.",
+   "notes": "Label sample size, timeframe and illustrative numbers. Avoid unexplained revenue screenshots and generic luxury montages.",
+   "palette": {
+    "primary": {
+     "hex": "#202B35",
+     "name": "graphite"
+    },
+    "secondary": {
+     "hex": "#2F6B5B",
+     "name": "business green"
+    },
+    "3rd": {
+     "hex": "#F1EDE4",
+     "name": "warm off-white"
+    },
+    "4th": {
+     "hex": "#E58A3A",
+     "name": "action orange"
+    }
+   },
+   "palette_extra": [],
+   "fonts": {
+    "headline": {
+     "family": "Manrope",
+     "weights": "700\u2013800"
+    },
+    "body": {
+     "family": "DM Sans",
+     "weights": "400\u2013600"
+    },
+    "metrics": {
+     "family": "DM Sans",
+     "weights": "600\u2013700"
+    }
+   }
+  },
+  {
+   "no": "4",
+   "niche": "Self-help / Personal Development",
+   "broll": "Journaling, daily routine, workspace, walking, phone distraction, planning, small habit moments, relatable everyday life.",
+   "motion": "Habit loop, progress ladder, checklist, 3-step framework, cause-and-effect diagram, simple cards and subtle parallax.",
+   "palette_text": "Primary #344B5E (muted blue); Secondary #7A9B87 (sage); 3rd #F3EBDD (warm cream); 4th #D5A45B (soft amber).",
+   "fonts_text": "HEADLINE: DM Sans (700) | BODY: Lora (400\u2013500) | QUOTES: Lora Italic (400). Google Fonts.",
+   "music": "Warm piano, gentle acoustic guitar, soft ambient beat, mellow lo-fi.",
+   "sfx": "Page turn, pencil writing, soft taps, room tone, gentle riser into the insight.",
+   "delivery": "Empathetic, reflective, encouraging, grounded; avoid preaching or toxic positivity.",
+   "hook": "Reframe a common struggle, relatable question, unexpected practical insight.",
+   "rhythm": "Medium pace; let meaningful lines breathe; use simple text reveals and occasional slow push-in.",
+   "notes": "Give one practical action. Avoid shaming language, miracle transformation promises and overused stock motivation shots.",
+   "palette": {
+    "primary": {
+     "hex": "#344B5E",
+     "name": "muted blue"
+    },
+    "secondary": {
+     "hex": "#7A9B87",
+     "name": "sage"
+    },
+    "3rd": {
+     "hex": "#F3EBDD",
+     "name": "warm cream"
+    },
+    "4th": {
+     "hex": "#D5A45B",
+     "name": "soft amber"
+    }
+   },
+   "fonts": {
+    "headline": {
+     "family": "DM Sans",
+     "weights": "700"
+    },
+    "body": {
+     "family": "Lora",
+     "weights": "400\u2013500"
+    },
+    "quotes": {
+     "family": "Lora Italic",
+     "weights": "400"
+    }
+   }
+  },
+  {
+   "no": "5",
+   "niche": "Motivation / Discipline",
+   "broll": "Training, practice repetitions, early morning preparation, focused work, setbacks, craft, consistent effort, quiet wins.",
+   "motion": "Kinetic typography for short phrases; milestone counter; progress montage; bold word reveals; simple build-up graphics.",
+   "palette_text": "Primary #171717 (near-black); Secondary #F2F0EA (off-white); 3rd #D94A38 (impact red); 4th #D99B36 (warm amber, sparingly).",
+   "fonts_text": "HEADLINE: Anton (400) | BODY: Inter (500\u2013700) | EMPHASIS: Anton for short punchy words. Google Fonts.",
+   "music": "Cinematic percussion, rising strings, hybrid trailer pulse, energetic instrumental; build then drop for emotional line.",
+   "sfx": "Footsteps, breath, fabric movement, gym foley, restrained deep hit, short riser.",
+   "delivery": "Conviction, urgency, resolve, controlled intensity; not constant shouting.",
+   "hook": "Strong challenge, consequence, direct command, contrast between intention and action.",
+   "rhythm": "Fast build with one or two slow holds; hard cuts on action; impact only on the main payoff.",
+   "notes": "Use 1\u20135 word emphasis phrases. Avoid nonstop zooms, constant impacts, shame-based messaging and fake luxury imagery.",
+   "palette": {
+    "primary": {
+     "hex": "#171717",
+     "name": "near-black"
+    },
+    "secondary": {
+     "hex": "#F2F0EA",
+     "name": "off-white"
+    },
+    "3rd": {
+     "hex": "#D94A38",
+     "name": "impact red"
+    },
+    "4th": {
+     "hex": "#D99B36",
+     "name": "warm amber, sparingly"
+    }
+   },
+   "palette_extra": [],
+   "fonts": {
+    "headline": {
+     "family": "Anton",
+     "weights": "400"
+    },
+    "body": {
+     "family": "Inter",
+     "weights": "500\u2013700"
+    },
+    "emphasis": {
+     "family": "Anton for short punchy words",
+     "weights": ""
+    }
+   }
+  },
+  {
+   "no": "6",
+   "niche": "Psychology / Relationships",
+   "broll": "Natural conversations, listening, quiet room, phone messages recreated, social situations, everyday behavioral moments; protect privacy.",
+   "motion": "Thought process diagram, decision tree, behavior loop, spectrum scale, relationship dynamics map, simple brain/behavior illustration.",
+   "palette_text": "Primary #34445C (slate blue); Secondary #8B7AA8 (muted lavender); 3rd #F1ECE7 (soft neutral); 4th #C98F76 (warm terracotta).",
+   "fonts_text": "HEADLINE: DM Sans (700) | BODY: Lora (400\u2013500) | SUPPORTING LABELS: Noto Sans (400\u2013600). Google Fonts.",
+   "music": "Soft ambient, mellow piano, minimal downtempo; avoid melodramatic sadness.",
+   "sfx": "Room tone, subtle phone buzz, gentle swish, soft tap; sparse and natural.",
+   "delivery": "Curious, compassionate, nuanced, non-judgmental; avoid diagnosing the viewer.",
+   "hook": "Reflective question, common misconception, behavior reframe, relatable mini-scenario.",
+   "rhythm": "Medium-slow; allow pauses after questions; use subtle push-ins and clean chapter cards.",
+   "notes": "Define psychological terms. Distinguish research from interpretation; don't label or diagnose people from a short clip.",
+   "palette": {
+    "primary": {
+     "hex": "#34445C",
+     "name": "slate blue"
+    },
+    "secondary": {
+     "hex": "#8B7AA8",
+     "name": "muted lavender"
+    },
+    "3rd": {
+     "hex": "#F1ECE7",
+     "name": "soft neutral"
+    },
+    "4th": {
+     "hex": "#C98F76",
+     "name": "warm terracotta"
+    }
+   },
+   "fonts": {
+    "headline": {
+     "family": "DM Sans",
+     "weights": "700"
+    },
+    "body": {
+     "family": "Lora",
+     "weights": "400\u2013500"
+    },
+    "supporting labels": {
+     "family": "Noto Sans",
+     "weights": "400\u2013600"
+    }
+   }
+  },
+  {
+   "no": "7",
+   "niche": "Health / Healthcare",
+   "broll": "Clinician demonstration, accurate anatomy, safe everyday health behavior, medical setting, equipment, evidence-based procedure footage.",
+   "motion": "Accurate anatomical overlays; symptom timeline; step sequence; risk/benefit cards; red-flag guidance; clean diagrams.",
+   "palette_text": "Primary #174A63 (clinical blue); Secondary #2A9D8F (teal); 3rd #F4F7F7 (clean white); 4th #E6A23C (warning amber). Use red #C94C4C only for genuine urgent warnings.",
+   "fonts_text": "HEADLINE: Manrope (700) | BODY: Source Sans 3 (400\u2013600) | DATA LABELS: Source Sans 3 (600\u2013700). Google Fonts.",
+   "music": "Light neutral ambient, gentle piano, clean understated pulse; no horror tension.",
+   "sfx": "Soft UI ticks, subtle swish, restrained alert only when medically appropriate.",
+   "delivery": "Reassuring, precise, responsible, calm; urgency only for real red flags.",
+   "hook": "Question that corrects a misconception; symptom context; when to seek professional help.",
+   "rhythm": "Medium; slow down for instructions and caveats; hold safety cards long enough to read.",
+   "notes": "Use qualified sources and dates. Avoid miracle-cure claims, diagnosis, fear tactics and misleading before/after visuals.",
+   "palette": {
+    "primary": {
+     "hex": "#174A63",
+     "name": "clinical blue"
+    },
+    "secondary": {
+     "hex": "#2A9D8F",
+     "name": "teal"
+    },
+    "3rd": {
+     "hex": "#F4F7F7",
+     "name": "clean white"
+    },
+    "4th": {
+     "hex": "#E6A23C",
+     "name": "warning amber"
+    }
+   },
+   "palette_extra": [
+    {
+     "role": "red",
+     "hex": "#C94C4C"
+    }
+   ],
+   "fonts": {
+    "headline": {
+     "family": "Manrope",
+     "weights": "700"
+    },
+    "body": {
+     "family": "Source Sans 3",
+     "weights": "400\u2013600"
+    },
+    "data labels": {
+     "family": "Source Sans 3",
+     "weights": "600\u2013700"
+    }
+   }
+  },
+  {
+   "no": "8",
+   "niche": "Fitness / Sports Science",
+   "broll": "Correct exercise form, coach demonstration, gym details, muscle action, equipment, side-by-side form comparison.",
+   "motion": "Joint-angle lines, rep counter, muscle highlight, movement path, tempo graphic, form comparison, set/rest cards.",
+   "palette_text": "Primary #20252B (dark graphite); Secondary #A6C936 (lime); 3rd #E9ECEF (light grey); 4th #F28C38 (energetic orange).",
+   "fonts_text": "HEADLINE: Oswald (600\u2013700) | BODY: Roboto (400\u2013600) | NUMBERS: Roboto (700). Google Fonts.",
+   "music": "Driving electronic, energetic hip-hop instrumental, athletic percussion; avoid overpowering vocals.",
+   "sfx": "Foot plant, barbell clink, controlled breath, rope/cloth movement, subtle whoosh.",
+   "delivery": "Energetic coach, supportive, specific, safety-aware.",
+   "hook": "Demonstration-first, common form mistake, measurable training question.",
+   "rhythm": "Fast demo cuts; hold correct form long enough to see; use match cuts and slow motion selectively.",
+   "notes": "Label exercise context, reps and modifications. Never glamorize unsafe form or body-shame.",
+   "palette": {
+    "primary": {
+     "hex": "#20252B",
+     "name": "dark graphite"
+    },
+    "secondary": {
+     "hex": "#A6C936",
+     "name": "lime"
+    },
+    "3rd": {
+     "hex": "#E9ECEF",
+     "name": "light grey"
+    },
+    "4th": {
+     "hex": "#F28C38",
+     "name": "energetic orange"
+    }
+   },
+   "fonts": {
+    "headline": {
+     "family": "Oswald",
+     "weights": "600\u2013700"
+    },
+    "body": {
+     "family": "Roboto",
+     "weights": "400\u2013600"
+    },
+    "numbers": {
+     "family": "Roboto",
+     "weights": "700"
+    }
+   }
+  },
+  {
+   "no": "9",
+   "niche": "Nutrition / Food Science",
+   "broll": "Ingredient close-ups, cooking process, portion scales, food labels, texture, meal preparation, relevant kitchen activity.",
+   "motion": "Nutrient comparison, portion visualizer, ingredient breakdown, food process sequence, simple label callouts.",
+   "palette_text": "Primary #536B45 (herb green); Secondary #D58B45 (warm orange); 3rd #F5EBDD (cream); 4th #8C4F3D (earth brown).",
+   "fonts_text": "HEADLINE: Nunito Sans (700\u2013800) | BODY: Noto Sans (400\u2013600) | CALLOUTS: Nunito Sans (700). Google Fonts.",
+   "music": "Light acoustic, playful marimba, gentle kitchen groove, warm upbeat instrumental.",
+   "sfx": "Chop, sizzle, pour, plate clink, packaging rustle, soft pop.",
+   "delivery": "Curious, practical, non-moralizing; avoid fear around food.",
+   "hook": "Unexpected food fact, comparison, cooking-method question, label-reading hook.",
+   "rhythm": "Medium; sensory B-roll inserts; clean match cuts and gentle speed changes.",
+   "notes": "Show serving size and units. Avoid universal diet claims, food fear and misleading portion visuals.",
+   "palette": {
+    "primary": {
+     "hex": "#536B45",
+     "name": "herb green"
+    },
+    "secondary": {
+     "hex": "#D58B45",
+     "name": "warm orange"
+    },
+    "3rd": {
+     "hex": "#F5EBDD",
+     "name": "cream"
+    },
+    "4th": {
+     "hex": "#8C4F3D",
+     "name": "earth brown"
+    }
+   },
+   "palette_extra": [],
+   "fonts": {
+    "headline": {
+     "family": "Nunito Sans",
+     "weights": "700\u2013800"
+    },
+    "body": {
+     "family": "Noto Sans",
+     "weights": "400\u2013600"
+    },
+    "callouts": {
+     "family": "Nunito Sans",
+     "weights": "700"
+    }
+   }
+  },
+  {
+   "no": "10",
+   "niche": "History / Biography",
+   "broll": "Archival photographs, maps, artifacts, real locations, paintings, documents; label reenactments and illustrations honestly.",
+   "motion": "Animated map routes, timeline, territory changes, family tree, archival photo parallax, document callouts.",
+   "palette_text": "Primary #3A3028 (dark sepia); Secondary #8B6B4A (aged bronze); 3rd #D9CCB5 (parchment); 4th #6E7470 (stone grey).",
+   "fonts_text": "HEADLINE: Playfair Display (600\u2013700) | BODY: Source Sans 3 (400\u2013600) | DATES / LABELS: Source Sans 3 (600). Google Fonts.",
+   "music": "Orchestral/folk textures, low strings, period-appropriate instruments, restrained cinematic ambience.",
+   "sfx": "Paper, quill, page turn, distant crowd/ambience, subtle cinematic hit.",
+   "delivery": "Narrative curiosity, gravity, wonder; measured and respectful.",
+   "hook": "Mini story, turning-point question, surprising historical detail, consequence reveal.",
+   "rhythm": "Story-led pacing; map and timeline reveals; slow push-ins on stills; restrained film grain.",
+   "notes": "Verify dates, names and quotations. Distinguish established facts from disputed accounts; no fake archival material.",
+   "palette": {
+    "primary": {
+     "hex": "#3A3028",
+     "name": "dark sepia"
+    },
+    "secondary": {
+     "hex": "#8B6B4A",
+     "name": "aged bronze"
+    },
+    "3rd": {
+     "hex": "#D9CCB5",
+     "name": "parchment"
+    },
+    "4th": {
+     "hex": "#6E7470",
+     "name": "stone grey"
+    }
+   },
+   "fonts": {
+    "headline": {
+     "family": "Playfair Display",
+     "weights": "600\u2013700"
+    },
+    "body": {
+     "family": "Source Sans 3",
+     "weights": "400\u2013600"
+    },
+    "dates / labels": {
+     "family": "Source Sans 3",
+     "weights": "600"
+    }
+   }
+  },
+  {
+   "no": "11",
+   "niche": "Geopolitics / Current Affairs",
+   "broll": "Verified location footage, maps, infrastructure, official statements, dated headlines, relevant public-domain/ licensed visuals.",
+   "motion": "Accurate map routes, stakeholder diagrams, event timeline, comparison cards, source/date callouts.",
+   "palette_text": "Primary #263746 (slate navy); Secondary #54758A (steel blue); 3rd #E5E8E8 (light grey); 4th #B65B50 (muted red, conflict only).",
+   "fonts_text": "HEADLINE: IBM Plex Sans (700) | BODY: IBM Plex Sans (400\u2013600) | MAP LABELS: IBM Plex Sans (500\u2013600). Google Fonts.",
+   "music": "Restrained documentary pulse, low ambient, minimal percussion; avoid patriotic or partisan cues.",
+   "sfx": "Subtle radio texture, paper, map pin, restrained low hit, quiet transition.",
+   "delivery": "Serious, analytical, even-handed; avoid outrage performance.",
+   "hook": "Context gap, overlooked stakeholder, timeline question, what changed and why.",
+   "rhythm": "Medium-slow; give context before conclusion; use map/timeline reveals and calm cuts.",
+   "notes": "Date-stamp developing facts. Label allegations vs confirmed facts. Avoid graphic violence and misleading map scales.",
+   "palette": {
+    "primary": {
+     "hex": "#263746",
+     "name": "slate navy"
+    },
+    "secondary": {
+     "hex": "#54758A",
+     "name": "steel blue"
+    },
+    "3rd": {
+     "hex": "#E5E8E8",
+     "name": "light grey"
+    },
+    "4th": {
+     "hex": "#B65B50",
+     "name": "muted red, conflict only"
+    }
+   },
+   "fonts": {
+    "headline": {
+     "family": "IBM Plex Sans",
+     "weights": "700"
+    },
+    "body": {
+     "family": "IBM Plex Sans",
+     "weights": "400\u2013600"
+    },
+    "map labels": {
+     "family": "IBM Plex Sans",
+     "weights": "500\u2013600"
+    }
+   }
+  },
+  {
+   "no": "12",
+   "niche": "Science / Technology / AI",
+   "broll": "Real product demos, screen recordings, lab/process footage, hardware macro, real-world use cases, verified experiments.",
+   "motion": "System pipeline, data flow, explainer diagrams, UI callouts, model comparison, step-by-step process animation.",
+   "palette_text": "Primary #202A44 (deep indigo); Secondary #397B9B (cyan-blue); 3rd #E8EEF2 (cool white); 4th #8B6CC7 (violet accent).",
+   "fonts_text": "HEADLINE: Space Grotesk (600\u2013700) | BODY: Inter (400\u2013600) | TECH LABELS: IBM Plex Sans (500\u2013600). Google Fonts.",
+   "music": "Minimal electronic, soft synth pulse, clean tech ambient, subtle rhythmic texture.",
+   "sfx": "UI clicks, data ticks, restrained digital glitch, soft whoosh, device foley.",
+   "delivery": "Curious, precise, cautiously excited; clearly state limitations.",
+   "hook": "Can it really do X? Demo-first, surprising limitation, myth-vs-reality.",
+   "rhythm": "Medium-fast; alternate speaker and demo; animate one system step at a time.",
+   "notes": "Show software/version/date and test conditions. Avoid fake interfaces and treating one demo as universal proof.",
+   "palette": {
+    "primary": {
+     "hex": "#202A44",
+     "name": "deep indigo"
+    },
+    "secondary": {
+     "hex": "#397B9B",
+     "name": "cyan-blue"
+    },
+    "3rd": {
+     "hex": "#E8EEF2",
+     "name": "cool white"
+    },
+    "4th": {
+     "hex": "#8B6CC7",
+     "name": "violet accent"
+    }
+   },
+   "fonts": {
+    "headline": {
+     "family": "Space Grotesk",
+     "weights": "600\u2013700"
+    },
+    "body": {
+     "family": "Inter",
+     "weights": "400\u2013600"
+    },
+    "tech labels": {
+     "family": "IBM Plex Sans",
+     "weights": "500\u2013600"
+    }
+   }
+  },
+  {
+   "no": "13",
+   "niche": "Education / Explainer",
+   "broll": "Real-world examples, classroom/desk, object demonstration, diagrams, relevant environment, simple experiments.",
+   "motion": "Step-by-step build, labeled diagrams, analogy animation, progress indicator, numbered stages, simple 2D shapes.",
+   "palette_text": "Primary #264653 (deep teal); Secondary #2A9D8F (teal); 3rd #F3F4ED (warm white); 4th #E9C46A (soft yellow).",
+   "fonts_text": "HEADLINE: Rubik (700\u2013800) | BODY: Inter (400\u2013600) | KEYWORDS: Rubik (600\u2013700). Google Fonts.",
+   "music": "Light upbeat instrumental, marimba/piano, soft electronic groove.",
+   "sfx": "Marker draw, page flip, soft click, gentle transition swish.",
+   "delivery": "Friendly teacher, confident, patient, encouraging.",
+   "hook": "One-minute promise, analogy, common confusion, question-led explanation.",
+   "rhythm": "Steady pace; each step gets one visual beat; use simple wipes and progressive reveals.",
+   "notes": "One concept per video. Avoid tiny labels, unexplained jargon and decorative motion that competes.",
+   "palette": {
+    "primary": {
+     "hex": "#264653",
+     "name": "deep teal"
+    },
+    "secondary": {
+     "hex": "#2A9D8F",
+     "name": "teal"
+    },
+    "3rd": {
+     "hex": "#F3F4ED",
+     "name": "warm white"
+    },
+    "4th": {
+     "hex": "#E9C46A",
+     "name": "soft yellow"
+    }
+   },
+   "fonts": {
+    "headline": {
+     "family": "Rubik",
+     "weights": "700\u2013800"
+    },
+    "body": {
+     "family": "Inter",
+     "weights": "400\u2013600"
+    },
+    "keywords": {
+     "family": "Rubik",
+     "weights": "600\u2013700"
+    }
+   }
+  },
+  {
+   "no": "14",
+   "niche": "Law / Civic Rights / Public Services",
+   "broll": "Forms, public office exterior, document close-ups with personal data hidden, process footage, relevant official websites.",
+   "motion": "Process flow, eligibility checklist, deadline timeline, document callouts, decision tree.",
+   "palette_text": "Primary #1F3A5F (institutional navy); Secondary #527C8A (muted teal); 3rd #F2F3F0 (off-white); 4th #C5A46D (muted gold).",
+   "fonts_text": "HEADLINE: Libre Franklin (700) | BODY: Noto Sans (400\u2013600) | LEGAL / INFO LABELS: Noto Sans (600\u2013700). Google Fonts.",
+   "music": "Neutral corporate ambient, calm piano, understated pulse.",
+   "sfx": "Paper shuffle, stamp, subtle UI ticks, restrained page transitions.",
+   "delivery": "Clear, reassuring, careful, measured; never alarmist.",
+   "hook": "Checklist hook, common paperwork mistake, process clarification, deadline reminder.",
+   "rhythm": "Medium pace; hold checklists; use clear step-by-step transitions.",
+   "notes": "Show jurisdiction and update date. Distinguish general information from legal advice. Hide personal data.",
+   "palette": {
+    "primary": {
+     "hex": "#1F3A5F",
+     "name": "institutional navy"
+    },
+    "secondary": {
+     "hex": "#527C8A",
+     "name": "muted teal"
+    },
+    "3rd": {
+     "hex": "#F2F3F0",
+     "name": "off-white"
+    },
+    "4th": {
+     "hex": "#C5A46D",
+     "name": "muted gold"
+    }
+   },
+   "fonts": {
+    "headline": {
+     "family": "Libre Franklin",
+     "weights": "700"
+    },
+    "body": {
+     "family": "Noto Sans",
+     "weights": "400\u2013600"
+    },
+    "legal / info labels": {
+     "family": "Noto Sans",
+     "weights": "600\u2013700"
+    }
+   }
+  },
+  {
+   "no": "15",
+   "niche": "Productivity / Software Tutorials",
+   "broll": "Actual screen recording, cursor close-ups, before/after workflow, shortcut demonstration, desk setup.",
+   "motion": "Cursor highlight, zoom box, numbered steps, keyboard shortcut overlays, progress bar, UI annotation.",
+   "palette_text": "Primary #273444 (charcoal blue); Secondary #477A9E (blue); 3rd #F4F6F8 (near-white); 4th #E0A13A (amber highlight).",
+   "fonts_text": "HEADLINE: Inter (700) | BODY: Inter (400\u2013600) | UI LABELS: Roboto (500\u2013600) when matching Android/product UI. Google Fonts.",
+   "music": "Light electronic groove, unobtrusive lo-fi, soft upbeat pulse.",
+   "sfx": "Mouse click, keyboard taps, muted notification, subtle confirmation tick.",
+   "delivery": "Helpful, brisk, competent, patient at complex steps.",
+   "hook": "Time-saving promise, one shortcut, before/after workflow, result-first demo.",
+   "rhythm": "Fast during clicks, pause after result; zoom into active UI; use clean cuts.",
+   "notes": "Use real interface and version. Keep cursor visible and readable; avoid fake UI and overly fast screen capture.",
+   "palette": {
+    "primary": {
+     "hex": "#273444",
+     "name": "charcoal blue"
+    },
+    "secondary": {
+     "hex": "#477A9E",
+     "name": "blue"
+    },
+    "3rd": {
+     "hex": "#F4F6F8",
+     "name": "near-white"
+    },
+    "4th": {
+     "hex": "#E0A13A",
+     "name": "amber highlight"
+    }
+   },
+   "fonts": {
+    "headline": {
+     "family": "Inter",
+     "weights": "700"
+    },
+    "body": {
+     "family": "Inter",
+     "weights": "400\u2013600"
+    }
+   }
+  },
+  {
+   "no": "16",
+   "niche": "Travel / Culture / Food",
+   "broll": "Location-specific streets, transport, food preparation, local craft, architecture, ambient details; film respectfully.",
+   "motion": "Animated route map, location pins, itinerary cards, price/time labels, subtle photo parallax.",
+   "palette_text": "Primary #28536B (travel blue); Secondary #D28B50 (sunset orange); 3rd #F3EBDD (sand); 4th #55745C (nature green).",
+   "fonts_text": "HEADLINE: Outfit (700) | BODY: Lora (400\u2013500) | LOCATION / CAPTIONS: Noto Sans (400\u2013600). Google Fonts.",
+   "music": "Regionally appropriate instrumental, acoustic/folk textures, warm light groove.",
+   "sfx": "Street ambience, footsteps, market chatter, utensil sounds, transport ambience.",
+   "delivery": "Wonder, warmth, discovery, respectful curiosity.",
+   "hook": "Hidden place, local detail, unexpected comparison, \u201cwhat to do first\u201d hook.",
+   "rhythm": "Medium-fast montage with slower establishing shots; location reveals and match cuts.",
+   "notes": "Verify place names, prices and seasonal context. Avoid cultural stereotypes and intrusive filming.",
+   "palette": {
+    "primary": {
+     "hex": "#28536B",
+     "name": "travel blue"
+    },
+    "secondary": {
+     "hex": "#D28B50",
+     "name": "sunset orange"
+    },
+    "3rd": {
+     "hex": "#F3EBDD",
+     "name": "sand"
+    },
+    "4th": {
+     "hex": "#55745C",
+     "name": "nature green"
+    }
+   },
+   "fonts": {
+    "headline": {
+     "family": "Outfit",
+     "weights": "700"
+    },
+    "body": {
+     "family": "Lora",
+     "weights": "400\u2013500"
+    },
+    "location / captions": {
+     "family": "Noto Sans",
+     "weights": "400\u2013600"
+    }
+   }
+  },
+  {
+   "no": "17",
+   "niche": "True Crime / Mystery",
+   "broll": "Verified locations, documents, evidence-style recreations clearly labelled, atmospheric empty spaces, non-graphic context footage.",
+   "motion": "Evidence timeline, map route, relationship chart, document callouts, sequence reconstruction with labels.",
+   "palette_text": "Primary #252C33 (charcoal); Secondary #455B68 (slate); 3rd #C8C7BE (stone); 4th #A77A45 (muted amber).",
+   "fonts_text": "HEADLINE: Oswald (600\u2013700) | BODY: IBM Plex Sans (400\u2013600) | CASE / TIMELINE LABELS: IBM Plex Sans (500\u2013600). Google Fonts.",
+   "music": "Low drone, restrained pulse, sparse strings, minimal percussion; controlled suspense.",
+   "sfx": "Room tone, distant ambience, paper handling, subtle low hit, quiet texture.",
+   "delivery": "Controlled suspense, sober empathy, respect for victims; avoid theatrical excitement.",
+   "hook": "Timeline contradiction, overlooked detail, unanswered question with a factual payoff.",
+   "rhythm": "Slow reveal, measured cuts, minimal glitch; let evidence and narration carry tension.",
+   "notes": "Label allegations vs convictions. Avoid graphic imagery, accusing unconvicted people and sensational victim framing.",
+   "palette": {
+    "primary": {
+     "hex": "#252C33",
+     "name": "charcoal"
+    },
+    "secondary": {
+     "hex": "#455B68",
+     "name": "slate"
+    },
+    "3rd": {
+     "hex": "#C8C7BE",
+     "name": "stone"
+    },
+    "4th": {
+     "hex": "#A77A45",
+     "name": "muted amber"
+    }
+   },
+   "fonts": {
+    "headline": {
+     "family": "Oswald",
+     "weights": "600\u2013700"
+    },
+    "body": {
+     "family": "IBM Plex Sans",
+     "weights": "400\u2013600"
+    },
+    "case / timeline labels": {
+     "family": "IBM Plex Sans",
+     "weights": "500\u2013600"
+    }
+   }
+  },
+  {
+   "no": "18",
+   "niche": "Career / Leadership / Workplace",
+   "broll": "Real workplace, collaboration, presentation, portfolio, interview preparation, feedback and mentoring moments.",
+   "motion": "Career ladder, skill matrix, feedback loop, decision framework, role comparison cards.",
+   "palette_text": "Primary #26394A (professional navy); Secondary #4F7D72 (muted green); 3rd #F1F0EA (warm white); 4th #D49A52 (muted amber).",
+   "fonts_text": "HEADLINE: Manrope (700\u2013800) | BODY: Source Sans 3 (400\u2013600) | KEY POINTS: Manrope (600\u2013700). Google Fonts.",
+   "music": "Modern light corporate, mellow upbeat, soft piano/electronic blend.",
+   "sfx": "Keyboard, page turn, subtle UI click, light office ambience.",
+   "delivery": "Supportive mentor, honest, constructive, confident but not arrogant.",
+   "hook": "Common career frustration, practical checklist, misconception, scenario question.",
+   "rhythm": "Medium pace; clean chapter breaks; use lower-thirds and simple diagrams.",
+   "notes": "Qualify advice by role, country and industry. Avoid universal promotion or salary promises.",
+   "palette": {
+    "primary": {
+     "hex": "#26394A",
+     "name": "professional navy"
+    },
+    "secondary": {
+     "hex": "#4F7D72",
+     "name": "muted green"
+    },
+    "3rd": {
+     "hex": "#F1F0EA",
+     "name": "warm white"
+    },
+    "4th": {
+     "hex": "#D49A52",
+     "name": "muted amber"
+    }
+   },
+   "palette_extra": [],
+   "fonts": {
+    "headline": {
+     "family": "Manrope",
+     "weights": "700\u2013800"
+    },
+    "body": {
+     "family": "Source Sans 3",
+     "weights": "400\u2013600"
+    },
+    "key points": {
+     "family": "Manrope",
+     "weights": "600\u2013700"
+    }
+   }
+  },
+  {
+   "no": "19",
+   "niche": "Parenting / Family",
+   "broll": "Everyday family activities with consent, hands/toys/activities, parent-child interaction, home routines; protect children's privacy.",
+   "motion": "Routine cards, age-stage timeline, simple choice diagram, step-by-step routine animation.",
+   "palette_text": "Primary #47645C (soft forest); Secondary #8BA7A0 (sage); 3rd #F6EFE4 (warm cream); 4th #D7A16D (soft peach).",
+   "fonts_text": "HEADLINE: Nunito Sans (700\u2013800) | BODY: Source Sans 3 (400\u2013600) | SUPPORTING TEXT: Source Sans 3 (500\u2013600). Google Fonts.",
+   "music": "Soft acoustic, warm piano, light ambient; gentle and reassuring.",
+   "sfx": "Toy movement, page turn, room tone, soft fabric and household foley.",
+   "delivery": "Gentle, validating, patient, non-judgmental.",
+   "hook": "Relatable parenting moment, question, practical routine, myth correction.",
+   "rhythm": "Slow-medium; leave space for empathy; use gentle cuts and calm text cards.",
+   "notes": "Use age/context qualifiers. Avoid parent shaming and absolute developmental claims. Obtain consent and protect child identity.",
+   "palette": {
+    "primary": {
+     "hex": "#47645C",
+     "name": "soft forest"
+    },
+    "secondary": {
+     "hex": "#8BA7A0",
+     "name": "sage"
+    },
+    "3rd": {
+     "hex": "#F6EFE4",
+     "name": "warm cream"
+    },
+    "4th": {
+     "hex": "#D7A16D",
+     "name": "soft peach"
+    }
+   },
+   "fonts": {
+    "headline": {
+     "family": "Nunito Sans",
+     "weights": "700\u2013800"
+    },
+    "body": {
+     "family": "Source Sans 3",
+     "weights": "400\u2013600"
+    },
+    "supporting text": {
+     "family": "Source Sans 3",
+     "weights": "500\u2013600"
+    }
+   }
+  },
+  {
+   "no": "20",
+   "niche": "Fashion / Beauty / Grooming",
+   "broll": "Fabric texture, product detail, fit demonstrations, styling variations, grooming process, accurate product close-ups.",
+   "motion": "Before/after layout, silhouette guides, color swatches, step labels, product feature callouts.",
+   "palette_text": "Primary #282629 (soft black); Secondary #B58A82 (dusty rose); 3rd #F2EDE8 (ivory); 4th #A7A18F (taupe).",
+   "fonts_text": "HEADLINE: Cormorant Garamond (600\u2013700) | BODY: Manrope (400\u2013600) | LABELS: Manrope (600\u2013700). Google Fonts.",
+   "music": "Stylish light electronic, fashion-house percussion, mellow groove.",
+   "sfx": "Fabric swish, zipper, product click, soft camera shutter, light whoosh.",
+   "delivery": "Confident, playful, inclusive, tasteful.",
+   "hook": "Visual transformation, styling mistake, product detail, one practical tip.",
+   "rhythm": "Fast comparisons; hold details long enough to inspect; use clean match cuts and subtle speed ramps.",
+   "notes": "Disclose paid/sponsored content. Keep product colors accurate. Avoid body shaming and altered results presented as natural.",
+   "palette": {
+    "primary": {
+     "hex": "#282629",
+     "name": "soft black"
+    },
+    "secondary": {
+     "hex": "#B58A82",
+     "name": "dusty rose"
+    },
+    "3rd": {
+     "hex": "#F2EDE8",
+     "name": "ivory"
+    },
+    "4th": {
+     "hex": "#A7A18F",
+     "name": "taupe"
+    }
+   },
+   "fonts": {
+    "headline": {
+     "family": "Cormorant Garamond",
+     "weights": "600\u2013700"
+    },
+    "body": {
+     "family": "Manrope",
+     "weights": "400\u2013600"
+    },
+    "labels": {
+     "family": "Manrope",
+     "weights": "600\u2013700"
+    }
+   }
+  },
+  {
+   "no": "21",
+   "niche": "Art / Design / Filmmaking",
+   "broll": "Behind-the-scenes, lighting setup, camera movement, timeline, layers, raw-vs-final comparison, materials and process.",
+   "motion": "Frame guides, layer breakdown, color wheels, motion paths, lighting diagrams, before/after wipe, tracking callouts.",
+   "palette_text": "Primary #262B31 (graphite); Secondary #527B8C (steel blue); 3rd #ECEBE6 (warm white); 4th #D58A45 (creative amber).",
+   "fonts_text": "HEADLINE: Syne (600\u2013700) | BODY: DM Sans (400\u2013600) | EXPERIMENTAL CALLOUTS: Syne (700\u2013800). Google Fonts.",
+   "music": "Minimal creative electronic, cinematic ambient, subtle groove.",
+   "sfx": "Switch click, marker, camera shutter, soft whoosh, tactile foley.",
+   "delivery": "Passionate craft expert, curious, precise, demonstrative.",
+   "hook": "Result-first reveal, \u201cwhy this works\u201d, common mistake, process breakdown.",
+   "rhythm": "Medium pace; demonstrate in steps; use split-screen comparisons and purposeful speed ramps.",
+   "notes": "Show settings and context. Avoid unexplained jargon, cluttered overlays and effects without a teaching purpose.",
+   "palette": {
+    "primary": {
+     "hex": "#262B31",
+     "name": "graphite"
+    },
+    "secondary": {
+     "hex": "#527B8C",
+     "name": "steel blue"
+    },
+    "3rd": {
+     "hex": "#ECEBE6",
+     "name": "warm white"
+    },
+    "4th": {
+     "hex": "#D58A45",
+     "name": "creative amber"
+    }
+   },
+   "fonts": {
+    "headline": {
+     "family": "Syne",
+     "weights": "600\u2013700"
+    },
+    "body": {
+     "family": "DM Sans",
+     "weights": "400\u2013600"
+    },
+    "experimental callouts": {
+     "family": "Syne",
+     "weights": "700\u2013800"
+    }
+   }
+  },
+  {
+   "no": "22",
+   "niche": "News / Journalism / Social Issues",
+   "broll": "Verified interviews, location footage, public records, official statements, dated headlines, contextual street footage.",
+   "motion": "Timeline, quote cards, data charts, location map, source labels, comparison graphics.",
+   "palette_text": "Primary #202F3E (news navy); Secondary #456B83 (steel blue); 3rd #F1F2F0 (paper white); 4th #C45A4A (alert red, sparingly).",
+   "fonts_text": "HEADLINE: Libre Franklin (700) | BODY: IBM Plex Sans (400\u2013600) | LOWER-THIRDS: IBM Plex Sans (500\u2013600). Google Fonts.",
+   "music": "Restrained documentary bed, subtle pulse, minimal piano; no sensational stingers.",
+   "sfx": "Newsroom room tone, paper, soft alert tick, restrained transition.",
+   "delivery": "Credible, composed, empathetic, evidence-led.",
+   "hook": "Who/what/when clarity, key development, context question, verified update.",
+   "rhythm": "Medium; clear chaptering; show dates and source labels; avoid frantic cuts.",
+   "notes": "Distinguish reporting, opinion and allegation. Verify footage date/location and protect vulnerable sources.",
+   "palette": {
+    "primary": {
+     "hex": "#202F3E",
+     "name": "news navy"
+    },
+    "secondary": {
+     "hex": "#456B83",
+     "name": "steel blue"
+    },
+    "3rd": {
+     "hex": "#F1F2F0",
+     "name": "paper white"
+    },
+    "4th": {
+     "hex": "#C45A4A",
+     "name": "alert red, sparingly"
+    }
+   },
+   "fonts": {
+    "headline": {
+     "family": "Libre Franklin",
+     "weights": "700"
+    },
+    "body": {
+     "family": "IBM Plex Sans",
+     "weights": "400\u2013600"
+    }
+   }
+  },
+  {
+   "no": "23",
+   "niche": "Comedy / Commentary / Pop Culture",
+   "broll": "Relevant memes or clips with rights awareness, expressive hands/body language, objects, reaction cutaways, context footage.",
+   "motion": "Punchline text, simple visual callbacks, reaction zoom, comparison cards, lightweight doodles.",
+   "palette_text": "Primary #24212B (deep plum-charcoal); Secondary #F2B544 (bright yellow); 3rd #F6F0E7 (cream); 4th #D96C5C (coral).",
+   "fonts_text": "HEADLINE: Archivo Black (400) | BODY: DM Sans (400\u2013600) | PUNCHLINE EMPHASIS: Archivo Black. Google Fonts.",
+   "music": "Upbeat funk, quirky plucks, light hip-hop, playful electronic groove.",
+   "sfx": "Pop, click, record scratch sparingly, short comedic sting, room tone.",
+   "delivery": "Playful, expressive, conversational; timing matters more than loudness.",
+   "hook": "Unexpected comparison, absurd observation, relatable question, punchline-first.",
+   "rhythm": "Fast timing with deliberate pause before punchline; jump cuts and reaction holds.",
+   "notes": "Do not overuse meme SFX. Respect clip rights and context; avoid misleading edits or targeted harassment.",
+   "palette": {
+    "primary": {
+     "hex": "#24212B",
+     "name": "deep plum-charcoal"
+    },
+    "secondary": {
+     "hex": "#F2B544",
+     "name": "bright yellow"
+    },
+    "3rd": {
+     "hex": "#F6F0E7",
+     "name": "cream"
+    },
+    "4th": {
+     "hex": "#D96C5C",
+     "name": "coral"
+    }
+   },
+   "fonts": {
+    "headline": {
+     "family": "Archivo Black",
+     "weights": "400"
+    },
+    "body": {
+     "family": "DM Sans",
+     "weights": "400\u2013600"
+    },
+    "punchline emphasis": {
+     "family": "Archivo Black",
+     "weights": ""
+    }
+   }
+  },
+  {
+   "no": "24",
+   "niche": "Real Estate / Architecture",
+   "broll": "Property walkthrough, room details, exterior, neighborhood, floor plan, material close-ups, daylight changes.",
+   "motion": "Floor-plan labels, room dimensions, location map, feature callouts, before/after renovation, simple 3D layout.",
+   "palette_text": "Primary #34424A (architectural slate); Secondary #78928A (sage); 3rd #F2EFE8 (limestone); 4th #B68A58 (wood/bronze).",
+   "fonts_text": "HEADLINE: Manrope (700\u2013800) | BODY: Lato (400\u2013600) | PROPERTY / PRICE DATA: Lato (600\u2013700). Google Fonts.",
+   "music": "Minimal premium ambient, soft piano, light modern groove.",
+   "sfx": "Door handle, footsteps, room tone, soft UI ticks, subtle whoosh.",
+   "delivery": "Confident, welcoming, informative; avoid overpromising.",
+   "hook": "One standout feature, layout reveal, location benefit, common buyer question.",
+   "rhythm": "Smooth measured camera movement; use match cuts between rooms; allow spatial orientation.",
+   "notes": "Label area units, location and listing status. Avoid deceptive wide-angle distortion and unsupported investment claims.",
+   "palette": {
+    "primary": {
+     "hex": "#34424A",
+     "name": "architectural slate"
+    },
+    "secondary": {
+     "hex": "#78928A",
+     "name": "sage"
+    },
+    "3rd": {
+     "hex": "#F2EFE8",
+     "name": "limestone"
+    },
+    "4th": {
+     "hex": "#B68A58",
+     "name": "wood/bronze"
+    }
+   },
+   "fonts": {
+    "headline": {
+     "family": "Manrope",
+     "weights": "700\u2013800"
+    },
+    "body": {
+     "family": "Lato",
+     "weights": "400\u2013600"
+    },
+    "property / price data": {
+     "family": "Lato",
+     "weights": "600\u2013700"
+    }
+   }
+  }
+ ],
+ "font_library": [
+  {
+   "family": "Inter",
+   "best_use": "Universal body, UI, captions, data",
+   "weights": "400, 500, 600, 700",
+   "role": "Highly legible neutral sans; excellent default for short-form captions.",
+   "url": "https://fonts.google.com/specimen/Inter"
+  },
+  {
+   "family": "Manrope",
+   "best_use": "Business, finance, premium explainers",
+   "weights": "400, 500, 600, 700, 800",
+   "role": "Modern geometric sans; strong headline and metric hierarchy.",
+   "url": "https://fonts.google.com/specimen/Manrope"
+  },
+  {
+   "family": "DM Sans",
+   "best_use": "Self-help, lifestyle, business, general body",
+   "weights": "400, 500, 600, 700",
+   "role": "Friendly contemporary sans; versatile for headlines and body.",
+   "url": "https://fonts.google.com/specimen/DM+Sans"
+  },
+  {
+   "family": "Space Grotesk",
+   "best_use": "Technology, AI, investing, design",
+   "weights": "400, 500, 600, 700",
+   "role": "Distinctive modern display sans; use for concise headlines.",
+   "url": "https://fonts.google.com/specimen/Space+Grotesk"
+  },
+  {
+   "family": "IBM Plex Sans",
+   "best_use": "News, geopolitics, technical explainers",
+   "weights": "400, 500, 600, 700",
+   "role": "Institutional, precise, editorial tone.",
+   "url": "https://fonts.google.com/specimen/IBM+Plex+Sans"
+  },
+  {
+   "family": "Source Sans 3",
+   "best_use": "Healthcare, education, long captions",
+   "weights": "400, 500, 600, 700",
+   "role": "Highly readable humanist sans for information-heavy content.",
+   "url": "https://fonts.google.com/specimen/Source+Sans+3"
+  },
+  {
+   "family": "Noto Sans",
+   "best_use": "Multilingual support, labels, general body",
+   "weights": "400, 500, 600, 700",
+   "role": "Broad language coverage; useful fallback for mixed scripts.",
+   "url": "https://fonts.google.com/specimen/Noto+Sans"
+  },
+  {
+   "family": "Roboto",
+   "best_use": "Fitness, tutorials, UI-style information",
+   "weights": "400, 500, 700",
+   "role": "Neutral and familiar; strong screen readability.",
+   "url": "https://fonts.google.com/specimen/Roboto"
+  },
+  {
+   "family": "Nunito Sans",
+   "best_use": "Nutrition, parenting, approachable content",
+   "weights": "400, 600, 700, 800",
+   "role": "Soft, friendly sans with clear readability.",
+   "url": "https://fonts.google.com/specimen/Nunito+Sans"
+  },
+  {
+   "family": "Lora",
+   "best_use": "Self-help, psychology, travel, editorial body",
+   "weights": "400, 500, 600",
+   "role": "Readable serif for reflective or narrative passages.",
+   "url": "https://fonts.google.com/specimen/Lora"
+  },
+  {
+   "family": "Playfair Display",
+   "best_use": "History, biography, documentary titles",
+   "weights": "500, 600, 700",
+   "role": "High-contrast editorial serif for title moments.",
+   "url": "https://fonts.google.com/specimen/Playfair+Display"
+  },
+  {
+   "family": "Cormorant Garamond",
+   "best_use": "Fashion, beauty, luxury, culture",
+   "weights": "500, 600, 700",
+   "role": "Elegant high-contrast serif; best for short display text.",
+   "url": "https://fonts.google.com/specimen/Cormorant+Garamond"
+  },
+  {
+   "family": "Oswald",
+   "best_use": "Fitness, mystery, documentary titles",
+   "weights": "500, 600, 700",
+   "role": "Condensed headline font for compact, impactful titles.",
+   "url": "https://fonts.google.com/specimen/Oswald"
+  },
+  {
+   "family": "Anton",
+   "best_use": "Motivation, bold statement titles",
+   "weights": "400",
+   "role": "Heavy display face; reserve for very short words/phrases.",
+   "url": "https://fonts.google.com/specimen/Anton"
+  },
+  {
+   "family": "Archivo Black",
+   "best_use": "Comedy, pop culture, bold punchlines",
+   "weights": "400",
+   "role": "Heavy display sans for strong visual emphasis.",
+   "url": "https://fonts.google.com/specimen/Archivo+Black"
+  },
+  {
+   "family": "Rubik",
+   "best_use": "Education, explainers, approachable titles",
+   "weights": "400, 500, 600, 700, 800",
+   "role": "Rounded geometric sans with clear shapes.",
+   "url": "https://fonts.google.com/specimen/Rubik"
+  },
+  {
+   "family": "Libre Franklin",
+   "best_use": "News, law, civic information",
+   "weights": "400, 500, 600, 700",
+   "role": "Neutral editorial sans for serious information.",
+   "url": "https://fonts.google.com/specimen/Libre+Franklin"
+  },
+  {
+   "family": "Outfit",
+   "best_use": "Travel, lifestyle, modern editorial titles",
+   "weights": "400, 500, 600, 700, 800",
+   "role": "Geometric sans with a polished contemporary look.",
+   "url": "https://fonts.google.com/specimen/Outfit"
+  },
+  {
+   "family": "Syne",
+   "best_use": "Art, design, creative filmmaking",
+   "weights": "500, 600, 700, 800",
+   "role": "Expressive display family; pair with a calmer body font.",
+   "url": "https://fonts.google.com/specimen/Syne"
+  },
+  {
+   "family": "Lato",
+   "best_use": "Real estate, corporate, clean body text",
+   "weights": "400, 500, 600, 700",
+   "role": "Humanist sans; dependable for labels and captions.",
+   "url": "https://fonts.google.com/specimen/Lato"
+  },
+  {
+   "family": "Archivo Narrow",
+   "best_use": "Compact labels and condensed supporting text",
+   "weights": "400, 500, 600, 700",
+   "role": "Narrow sans for dense lower-thirds; use sparingly.",
+   "url": "https://fonts.google.com/specimen/Archivo+Narrow"
+  },
+  {
+   "family": "Barlow Condensed",
+   "best_use": "Comedy, sports, energetic titles",
+   "weights": "500, 600, 700, 800",
+   "role": "Condensed display option for punchy short-form graphics.",
+   "url": "https://fonts.google.com/specimen/Barlow+Condensed"
+  }
+ ],
+ "palette_roles": [
+  {
+   "role": "ROLE",
+   "purpose": "PURPOSE",
+   "coverage": "SUGGESTED COVERAGE",
+   "example": "EXAMPLE USE",
+   "accessibility": "ACCESSIBILITY CHECK",
+   "important": "IMPORTANT"
+  },
+  {
+   "role": "Primary",
+   "purpose": "Main brand / dominant visual anchor",
+   "coverage": "Approx. 50\u201360%",
+   "example": "Background panels, main title blocks, major graphic areas",
+   "accessibility": "Text on it must have strong contrast",
+   "important": "Not a rigid percentage; adapt to footage and brand."
+  },
+  {
+   "role": "Secondary",
+   "purpose": "Support color that creates hierarchy",
+   "coverage": "Approx. 20\u201330%",
+   "example": "Subheadings, chart series, secondary panels, labels",
+   "accessibility": "Check contrast with both primary and neutral",
+   "important": "Keep meaning consistent across the video."
+  },
+  {
+   "role": "3rd / Neutral",
+   "purpose": "Breathing room and readability",
+   "coverage": "Approx. 10\u201320%",
+   "example": "Caption backing, negative space, cards, backgrounds",
+   "accessibility": "Prefer high contrast for small text",
+   "important": "Often off-white, cream, grey or pale neutral."
+  },
+  {
+   "role": "4th / Accent",
+   "purpose": "Attention, status or one key highlight",
+   "coverage": "Approx. 5\u201310%",
+   "example": "Key number, warning, selected step, CTA detail",
+   "accessibility": "Never rely on color alone; add label/icon",
+   "important": "Use sparingly so it retains meaning."
+  }
+ ]
+}
