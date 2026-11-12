@@ -9,6 +9,8 @@ import numpy as np, cv2
 from PIL import Image, ImageDraw, ImageFont
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import cc
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from ff import FFMPEG, probe as ffprobe_info
 
 W, H, FPS = 1080, 1920, 30
 PHI = 1.618
@@ -309,11 +311,11 @@ def plan_layers():
 # ───────────────────────── frame sources
 class Reader:
     def __init__(s, path):
-        s.path = path; j = json.loads(subprocess.run(["ffprobe", "-v", "error", "-select_streams", "v", "-show_entries", "stream=width,height,r_frame_rate", "-of", "json", path], capture_output=True, text=True).stdout)["streams"][0]
-        s.w, s.h = j["width"], j["height"]; n, d = j["r_frame_rate"].split("/"); s.fps = int(n) / int(d); s.p = None; s.cur = -1; s.last = None
+        s.path = path; j = ffprobe_info(path)
+        s.w, s.h, s.fps = j["w"], j["h"], j["fps"]; s.p = None; s.cur = -1; s.last = None
     def _open(s, i):
         if s.p: s.p.kill()
-        s.p = subprocess.Popen(["ffmpeg", "-v", "error", "-ss", f"{i / s.fps:.4f}", "-i", s.path, "-f", "rawvideo", "-pix_fmt", "rgb24", "-"], stdout=subprocess.PIPE, stderr=subprocess.DEVNULL, bufsize=10 ** 8)
+        s.p = subprocess.Popen([FFMPEG, "-v", "error", "-ss", f"{i / s.fps:.4f}", "-i", s.path, "-f", "rawvideo", "-pix_fmt", "rgb24", "-"], stdout=subprocess.PIPE, stderr=subprocess.DEVNULL, bufsize=10 ** 8)
         s.cur = i - 1
     def get(s, t):
         i = max(0, int(round(t * s.fps)))
@@ -328,7 +330,7 @@ RD = Reader(RAW)
 def auto_params():
     fr = []
     for k in range(5):
-        r = subprocess.run(["ffmpeg", "-v", "error", "-ss", f"{PROBE['dur'] * (k + 0.5) / 5:.2f}", "-i", RAW, "-frames:v", "1", "-f", "rawvideo", "-pix_fmt", "rgb24", "-"], capture_output=True).stdout
+        r = subprocess.run([FFMPEG, "-v", "error", "-ss", f"{PROBE['dur'] * (k + 0.5) / 5:.2f}", "-i", RAW, "-frames:v", "1", "-f", "rawvideo", "-pix_fmt", "rgb24", "-"], capture_output=True).stdout
         if len(r) == RD.w * RD.h * 3: fr.append(np.frombuffer(r, np.uint8).reshape(RD.h, RD.w, 3))
     sel = np.stack(fr).astype(np.float32) / 255
     Y = 0.2126 * sel[..., 0] + 0.7152 * sel[..., 1] + 0.0722 * sel[..., 2]
@@ -690,11 +692,11 @@ def main():
     if "--concat" in a:
         N = int(a[a.index("--concat") + 1]); lst = os.path.join(WD, "parts.txt")
         open(lst, "w").write("".join(f"file 'video.part{i}.mp4'\n" for i in range(N)))
-        subprocess.run(["ffmpeg", "-v", "error", "-y", "-f", "concat", "-safe", "0", "-i", lst, "-c", "copy", os.path.join(WD, "video.mp4")], check=True); print("video.mp4"); return
+        subprocess.run([FFMPEG, "-v", "error", "-y", "-f", "concat", "-safe", "0", "-i", lst, "-c", "copy", os.path.join(WD, "video.mp4")], check=True); print("video.mp4"); return
     i, N = (map(int, a[a.index("--part") + 1].split("/")) if "--part" in a else (0, 1))
     n0, n1 = tl.n * i // N, tl.n * (i + 1) // N
     out = os.path.join(WD, "video.mp4" if N == 1 else f"video.part{i}.mp4")
-    p = subprocess.Popen(["ffmpeg", "-v", "error", "-y", "-f", "rawvideo", "-pix_fmt", "rgb24", "-s", f"{W}x{H}", "-r", str(FPS), "-i", "-",
+    p = subprocess.Popen([FFMPEG, "-v", "error", "-y", "-f", "rawvideo", "-pix_fmt", "rgb24", "-s", f"{W}x{H}", "-r", str(FPS), "-i", "-",
                           "-c:v", "libx264", "-preset", "medium", "-crf", "17", "-pix_fmt", "yuv420p", "-movflags", "+faststart", out], stdin=subprocess.PIPE)
     for n in range(n0, n1):
         p.stdin.write((out_frame(n / FPS, n) * 255 + 0.5).astype(np.uint8).tobytes())

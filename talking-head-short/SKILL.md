@@ -9,10 +9,14 @@ Write terse replies. Don't echo transcripts or long logs. Fix things by editing 
 
 `S=<this skill dir>/scripts`, `WD=<work dir next to the raw file>/ths_<name>`.
 
-## 0. Setup (once per machine)
-`bash $S/setup.sh` → use the printed `PY=`. Needs ffmpeg.
-- If whisper can't install or download, ask the user to paste a transcript (or upload an .srt), then run `$PY $S/align_text.py $WD transcript.txt`.
-- Assets go to `~/.ths_assets` (override with `THS_ASSETS`).
+## 0. Setup (once per machine/sandbox)
+`bash $S/setup.sh` → use the printed `PY=`. It installs everything from PyPI, including a static ffmpeg if none exists.
+Every download has an automatic fallback. Sandboxes (claude.ai code execution, free or paid) usually block HuggingFace, Mixkit and the Google Fonts API, but allow GitHub:
+- transcription model: HuggingFace → GitHub mirror (whisper-base, then whisper-tiny)
+- music/SFX: Mixkit → GitHub mirror CC0 pack (ids look like `pack:lofi_chill`)
+- fonts: Google Fonts repo → jsDelivr → GitHub mirror OFL pack (32 families) → system font
+- B-roll: Mixkit → none (use cards, or ask the user to upload clips)
+Only if every source fails: ask for a pasted transcript → `$PY $S/align_text.py $WD transcript.txt`. Assets cache in `~/.ths_assets`.
 
 ## 1. Analyze
 `$PY $S/analyze.py RAW $WD`
@@ -39,7 +43,7 @@ Skip any question the user already answered. Wait for the answers.
 - Fonts: `$PY $S/assets.py font "Family" ...`
 - Music, SFX, video: run `assets.py music|sfx|video "<query>"` to list, then `assets.py get <kind> <id> $WD`.
   - SFX by tone: calm → "air woosh", "chime"; balanced → "whoosh", "pop"; energetic → "swoosh", "impact" (used once).
-- If the output says NETWORK_BLOCKED, give the user the URL to download and upload the file, or continue without it.
+- Blocked sources fall back automatically (pack ids). `assets.py pack` lists the whole offline CC0 pack.
 
 ## 5. Write spec.json, plan, styleframes
 1. Write `$WD/spec.json` (see references/spec.md): captions in spoken order, cards on the right clauses, audio.

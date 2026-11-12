@@ -4,19 +4,32 @@ Writes WORKDIR/: words.json (src word times), segments.json (proposed clean cut)
 Prints a compact report (keep it short: this output goes into the model context)."""
 import sys, os, json, subprocess, re, wave
 import numpy as np
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from ff import FFMPEG, probe as ffprobe_info
 
 def sh(cmd): return subprocess.run(cmd, capture_output=True, text=True)
 
-def probe(p):
-    j = json.loads(sh(["ffprobe", "-v", "error", "-show_entries", "format=duration:stream=codec_type,width,height,r_frame_rate", "-of", "json", p]).stdout)
-    v = next(s for s in j["streams"] if s["codec_type"] == "video")
-    n, d = v["r_frame_rate"].split("/")
-    return dict(w=v["width"], h=v["height"], fps=round(int(n) / int(d), 3), dur=round(float(j["format"]["duration"]), 2),
-                audio=any(s["codec_type"] == "audio" for s in j["streams"]))
+def probe(p): return ffprobe_info(p)
+
+def load_model(model):
+    """HuggingFace first; if blocked (403/offline sandbox) → GitHub mirror of the same open Whisper weights (MIT)."""
+    from faster_whisper import WhisperModel
+    import net
+    if any(h in "huggingface.co" for h in net.BLOCK): os.environ["HF_HUB_OFFLINE"] = "1"
+    try:
+        return WhisperModel(model, device="cpu", compute_type="int8"), model
+    except Exception as e:
+        print("HF model unavailable (" + str(e)[:60] + ") → GitHub mirror")
+    for name in (("whisper-base",) if model != "tiny" else ()) + ("whisper-tiny",):
+        try:
+            d = net.mirror_zip(name + ".zip", os.path.join(net.ASSETS, "models"))
+            return WhisperModel(os.path.join(d, name), device="cpu", compute_type="int8"), name
+        except Exception as e:
+            print(name, "mirror failed:", str(e)[:100])
+    raise RuntimeError("no transcription model reachable")
 
 def transcribe(wav, model):
-    from faster_whisper import WhisperModel
-    m = WhisperModel(model, device="cpu", compute_type="int8")
+    m, used = load_model(model)
     segs, info = m.transcribe(wav, word_timestamps=True, beam_size=5, condition_on_previous_text=False)
     words = [dict(w=w.word.strip(), s=round(w.start, 2), e=round(w.end, 2), p=round(w.probability, 2)) for s in segs for w in s.words]
     return words, info.language
@@ -80,7 +93,7 @@ def speech_segments(wav, remove, maxgap=0.32, pad_in=0.06, pad_out=0.10):
 def face_eye(raw, P):
     import cv2
     casc = getattr(cv2, "CascadeClassifier", None)
-    f = np.frombuffer(subprocess.run(["ffmpeg", "-v", "error", "-i", raw, "-vf", f"fps=12/{P['dur']}", "-f", "rawvideo", "-pix_fmt", "gray", "-"], capture_output=True).stdout, np.uint8)
+    f = np.frombuffer(subprocess.run([FFMPEG, "-v", "error", "-i", raw, "-vf", f"fps=12/{P['dur']}", "-f", "rawvideo", "-pix_fmt", "gray", "-"], capture_output=True).stdout, np.uint8)
     f = f[:len(f) // (P['w'] * P['h']) * P['w'] * P['h']].reshape(-1, P['h'], P['w'])
     pts = []
     if casc is not None:
@@ -96,15 +109,15 @@ def face_eye(raw, P):
 def grid(raw, P, out):
     t = [P['dur'] * k / 5 for k in (0.5, 1.5, 2.5, 3.5, 4.5)]
     fl = ";".join(f"[0:v]trim=start={x:.2f},setpts=PTS-STARTPTS,select=eq(n\\,0),scale=270:-2,drawbox=x=0:y=ih*0.30-1:w=iw:h=2:color=yellow@0.6[f{i}]" for i, x in enumerate(t))
-    r = sh(["ffmpeg", "-v", "error", "-y", "-i", raw, "-filter_complex", fl + ";" + "".join(f"[f{i}]" for i in range(5)) + "hstack=inputs=5[o]", "-map", "[o]", "-frames:v", "1", out])
+    r = sh([FFMPEG, "-v", "error", "-y", "-i", raw, "-filter_complex", fl + ";" + "".join(f"[f{i}]" for i in range(5)) + "hstack=inputs=5[o]", "-map", "[o]", "-frames:v", "1", out])
     if r.returncode:  # no drawbox filter → plain tile
-        sh(["ffmpeg", "-v", "error", "-y", "-i", raw, "-vf", f"fps=5/{P['dur']},scale=270:-2,tile=5x1", "-frames:v", "1", out])
+        sh([FFMPEG, "-v", "error", "-y", "-i", raw, "-vf", f"fps=5/{P['dur']},scale=270:-2,tile=5x1", "-frames:v", "1", out])
 
 def main():
     raw, wd = sys.argv[1], sys.argv[2]; os.makedirs(wd, exist_ok=True)
     model = sys.argv[sys.argv.index("--model") + 1] if "--model" in sys.argv else "small"
     P = probe(raw); wav = os.path.join(wd, "a16.wav")
-    sh(["ffmpeg", "-v", "error", "-y", "-i", raw, "-ac", "1", "-ar", "16000", wav])
+    sh([FFMPEG, "-v", "error", "-y", "-i", raw, "-ac", "1", "-ar", "16000", wav])
     if "--no-tx" not in sys.argv and not os.path.exists(os.path.join(wd, "words.json")):
         try:
             words, lang = transcribe(wav, model); P["lang"] = lang

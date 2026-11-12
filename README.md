@@ -32,15 +32,23 @@ Download `talking-head-short.zip` from the **Releases** page (or zip the `talkin
 Then go to **Settings → Capabilities → Skills → Upload skill**. Code execution must be enabled.
 
 ## Requirements
-- `ffmpeg` (mac: `brew install ffmpeg` · linux: `apt-get install -y ffmpeg`)
+- `ffmpeg` (optional: if missing, setup installs a static build from PyPI)
 - Python 3.9+. The skill's `setup.sh` creates a venv with numpy, scipy, pillow, opencv-python-headless (<5) and faster-whisper.
-- Internet access for the first transcription model download and for assets.
+- Internet access to PyPI and GitHub (HuggingFace/Mixkit/Google Fonts are optional; see below).
 
-### Notes for the claude.ai sandbox / free plan
-The sandbox may block downloads or limit run time. The skill degrades gracefully:
-- If transcription can't install, paste or upload a transcript or `.srt` and it aligns the words (`align_text.py`).
-- If asset downloads are blocked, it gives you the Mixkit / Google Fonts links to download and upload yourself, or continues without them.
-- If renders hit a time limit, it renders in parts (`--part i/N`, then `--concat N`).
+### Works in Claude's sandbox (free plan included)
+Sandboxes often block HuggingFace, Mixkit and the Google Fonts API, but allow GitHub and PyPI. The skill falls back automatically to this repo's **[assets-v1 release](https://github.com/uday629/talking-head-short-skill/releases/tag/assets-v1)**:
+
+| need | first source | fallback |
+|---|---|---|
+| ffmpeg | system | static build from PyPI (`imageio-ffmpeg`) |
+| speech-to-text | HuggingFace Whisper | `whisper-base.zip` / `whisper-tiny.zip` (MIT) |
+| music + SFX | Mixkit (free license) | `ths-pack.zip`: 8 tracks + 13 SFX, CC0 public domain (OpenGameArt) |
+| fonts | Google Fonts (GitHub API → jsDelivr) | `ths-fonts.zip`: 32 OFL families |
+| B-roll | Mixkit stock video | motion-graphic cards instead (or upload your own clips) |
+
+Long renders are split into parts (`--part i/N`, then `--concat N`) to fit sandbox time limits. Rendering is CPU-heavy, so a laptop with Claude Code is much faster.
+If your fork lives elsewhere, set `THS_REPO=owner/repo` so the mirrors point at your releases.
 
 ## How it works
 ```
@@ -53,6 +61,7 @@ talking-head-short/
 └── scripts/
     ├── setup.sh             one-time environment
     ├── analyze.py           transcribe, clean cut, eye point, report
+    ├── net.py / ff.py       download fallbacks (GitHub mirror) + ffmpeg resolver
     ├── align_text.py        fallback word timing from a pasted transcript
     ├── style.py             picks the genre row and adapts the palette to the real footage (contrast/hue), with reasons
     ├── assets.py            search/download Mixkit music/SFX/video + Google Fonts

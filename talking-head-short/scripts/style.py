@@ -14,6 +14,8 @@ Every change is written with a reason, so the matrix stays the default and devia
 """
 import sys, json, math, subprocess, colorsys, os
 import numpy as np, cv2
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from ff import FFMPEG, probe as ffprobe_info
 REF = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "references", "genre_matrix.json")
 
 def hex2rgb(h): h = h.lstrip("#"); return np.array([int(h[i:i + 2], 16) for i in (0, 2, 4)], float) / 255
@@ -30,8 +32,8 @@ def set_h(c, H):
     h, l, s = colorsys.rgb_to_hls(*np.clip(c, 0, 1)); return np.array(colorsys.hls_to_rgb((H % 360) / 360, l, s))
 
 def measure(path, n=24):
-    dur = float(subprocess.run(["ffprobe", "-v", "error", "-show_entries", "format=duration", "-of", "csv=p=0", path], capture_output=True, text=True).stdout)
-    raw = subprocess.run(["ffmpeg", "-v", "error", "-i", path, "-vf", f"fps={n / dur:.4f},scale=216:384", "-f", "rawvideo", "-pix_fmt", "rgb24", "-"], capture_output=True).stdout
+    dur = ffprobe_info(path)["dur"]
+    raw = subprocess.run([FFMPEG, "-v", "error", "-i", path, "-vf", f"fps={n / dur:.4f},scale=216:384", "-f", "rawvideo", "-pix_fmt", "rgb24", "-"], capture_output=True).stdout
     f = np.frombuffer(raw, np.uint8).reshape(-1, 384, 216, 3).astype(float) / 255
     cap = f[:, int(384 * 0.52):int(384 * 0.78), int(216 * 0.1):int(216 * 0.9)].reshape(-1, 3)   # caption zone
     allp = f.reshape(-1, 3)
