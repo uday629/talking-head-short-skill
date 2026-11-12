@@ -36,6 +36,12 @@ Then go to **Settings → Capabilities → Skills → Upload skill**. Code execu
 - Python 3.9+. The skill's `setup.sh` creates a venv with numpy, scipy, pillow, opencv-python-headless (<5) and faster-whisper.
 - Internet access to PyPI and GitHub (HuggingFace/Mixkit/Google Fonts are optional; see below).
 
+### claude.ai: turn on network access first
+The sandbox needs internet to install Python libraries and download the model and assets.
+**Settings → Capabilities → Code execution → Network access → "All domains"**, or allow at least:
+`pypi.org, files.pythonhosted.org, github.com, objects.githubusercontent.com, release-assets.githubusercontent.com, api.github.com, raw.githubusercontent.com, cdn.jsdelivr.net` (plus optionally `huggingface.co, mixkit.co, assets.mixkit.co`).
+With network access off ("None"), the skill cannot run: the speech model and libraries are hundreds of MB, too large to ship inside a skill.
+
 ### Works in Claude's sandbox (free plan included)
 Sandboxes often block HuggingFace, Mixkit and the Google Fonts API, but allow GitHub and PyPI. The skill falls back automatically to this repo's **[assets-v1 release](https://github.com/uday629/talking-head-short-skill/releases/tag/assets-v1)**:
 

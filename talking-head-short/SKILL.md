@@ -16,6 +16,8 @@ Every download has an automatic fallback. Sandboxes (claude.ai code execution, f
 - music/SFX: Mixkit → GitHub mirror CC0 pack (ids look like `pack:lofi_chill`)
 - fonts: Google Fonts repo → jsDelivr → GitHub mirror OFL pack (32 families) → system font
 - B-roll: Mixkit → none (use cards, or ask the user to upload clips)
+If setup prints "no network" / pip fails: the sandbox has network egress OFF. Tell the user exactly (one message):
+"claude.ai → Settings → Capabilities → Code execution → Network access: **All domains** (or add: pypi.org, files.pythonhosted.org, github.com, objects.githubusercontent.com, release-assets.githubusercontent.com, api.github.com, raw.githubusercontent.com, cdn.jsdelivr.net, huggingface.co, mixkit.co, assets.mixkit.co), then start a new chat and run /talking-head-short again." Don't attempt the edit without numpy/ffmpeg.
 Only if every source fails: ask for a pasted transcript → `$PY $S/align_text.py $WD transcript.txt`. Assets cache in `~/.ths_assets`.
 
 ## 1. Analyze
