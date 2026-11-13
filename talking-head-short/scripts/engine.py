@@ -34,6 +34,20 @@ WORDS = json.load(open(os.path.join(WD, "words.json")))
 SEGS = SPEC.get("segments") or json.load(open(os.path.join(WD, "segments.json")))
 RAW = SPEC.get("raw") or SPEC["src"]
 
+# look.json (from look.py) is this video's own design system: palette, fonts, card background texture,
+# transition set and caption case. When present it overrides spec.palette/spec.fonts so every video that
+# runs look.py gets a different, footage/genre-matched system instead of one fixed default.
+LOOK = json.load(open(os.path.join(WD, "look.json"))) if os.path.exists(os.path.join(WD, "look.json")) else None
+if LOOK:
+    c = LOOK["colors"]
+    SPEC["palette"] = dict(primary=c["mid"], secondary=c["sec"], **{"3rd": c["cap_text"], "4th": c["cap_acc"]}, card_bg=c["bg"])
+    f = LOOK["fonts"]
+    SPEC["fonts"] = dict(lead=f["lead"], key=f["key"], acc=f["acc"], acc_italic=f.get("acc_italic", False), key_italic=f.get("key_italic", False))
+BGKIND = LOOK["bg"] if LOOK else "paper"
+UPCASE = {"key"} if (LOOK and LOOK.get("case") == "upper") else set()
+TRANS_ALIAS = {"push": "zoom", "whip": "zoom", "tilt3d": "zoom", "iris": "zoom", "peel": "blur", "glitch": "blur", "stamp": "pop",
+               "parallax": "zoom", "orbit": "zoom", "mask": "blur"}
+
 class TL:
     def __init__(s, segs):
         s.segs = segs; s.out = []; o = 0.0
@@ -135,6 +149,7 @@ def size_for_xh(role, target): return max(18, int(round(target * 100 / max(1, xh
 
 _sc = {}
 def sprite(txt, role, size, track=0.0):
+    if role in UPCASE: txt = txt.upper()          # display-only (word matching already used the lowercase form)
     k = (txt, role, int(size), track)
     if k in _sc: return _sc[k]
     f = font(role, size); pad = int(size * 0.35) + 8; asc, desc = f.getmetrics()
@@ -384,8 +399,23 @@ _rng = np.random.default_rng(7)
 _noise = cv2.resize(cv2.GaussianBlur(_rng.normal(0, 1, (H // 3, W // 3)).astype(np.float32), (0, 0), 0.8), (W, H))[..., None]
 _rr = np.clip(np.sqrt(((_xx - W / 2) / 820) ** 2 + ((_yy - H * 0.45) / 1150) ** 2), 0, 1)[..., None]
 LIGHT_CARD = float(0.2126 * CARD[0] + 0.7152 * CARD[1] + 0.0722 * CARD[2]) > 0.5
-CARD_BG = (CARD * (1.12 - 0.30 * _rr) + _noise * 0.008).astype(np.float32)
-INK = PAL["primary"] if LIGHT_CARD else TEXT          # text color on cards
+INK = hexc(LOOK["colors"]["ink"]) if LOOK else (PAL["primary"] if LIGHT_CARD else TEXT)   # text color on cards
+
+def _card_bg():
+    """card canvas texture, varied by LOOK['bg'] so each design family reads differently, not just re-tinted."""
+    if BGKIND == "block":                           # flat, no grain/vignette — bold kinetic / UI blocks
+        return np.tile(CARD, (H, W, 1)).astype(np.float32)
+    if BGKIND == "grid":                             # tech HUD / blueprint — faint rule grid on a dark/blue field
+        g = (CARD * (1.08 - 0.22 * _rr)).astype(np.float32)
+        step = 72; ln = ((_xx.astype(int) % step < 2) | (_yy.astype(int) % step < 2)).astype(np.float32)[..., None]
+        return g + ln * ACC * 0.05 + _noise * 0.006
+    if BGKIND == "film":                             # documentary / noir — darker vignette, heavier grain
+        return (CARD * (1.0 - 0.42 * _rr) + _noise * 0.018).astype(np.float32)
+    if BGKIND == "mesh":                             # soft two-tone diagonal gradient — UI/glass
+        u = np.clip((_xx + _yy * 0.6) / (W + H * 0.6), 0, 1)[..., None]
+        return CARD * (1 - 0.22 * u) + SEC * 0.18 * u + _noise * 0.006
+    return (CARD * (1.12 - 0.30 * _rr) + _noise * 0.008).astype(np.float32)   # paper/frosted/solid/light default
+CARD_BG = _card_bg()
 def C(c): return tuple(float(v) for v in c)
 def poly(img, pts, col, th, closed=False):
     if len(pts) < 2: return
@@ -626,6 +656,7 @@ def captions(fr, t, covered):
 
 # ───────────────────────── transitions
 def tr_in(A, B, p, style):
+    style = TRANS_ALIAS.get(style, style)
     k = eio(p)
     if style == "zoom":
         zf, zb = 1 + 0.10 * k, 1.05 - 0.05 * k
@@ -696,8 +727,9 @@ def main():
     i, N = (map(int, a[a.index("--part") + 1].split("/")) if "--part" in a else (0, 1))
     n0, n1 = tl.n * i // N, tl.n * (i + 1) // N
     out = os.path.join(WD, "video.mp4" if N == 1 else f"video.part{i}.mp4")
+    preset = os.environ.get("THS_PRESET", "medium"); crf = os.environ.get("THS_CRF", "17")   # THS_PRESET=veryfast in a sandbox with a tight per-command time limit
     p = subprocess.Popen([FFMPEG, "-v", "error", "-y", "-f", "rawvideo", "-pix_fmt", "rgb24", "-s", f"{W}x{H}", "-r", str(FPS), "-i", "-",
-                          "-c:v", "libx264", "-preset", "medium", "-crf", "17", "-pix_fmt", "yuv420p", "-movflags", "+faststart", out], stdin=subprocess.PIPE)
+                          "-c:v", "libx264", "-preset", preset, "-crf", crf, "-pix_fmt", "yuv420p", "-movflags", "+faststart", out], stdin=subprocess.PIPE)
     for n in range(n0, n1):
         p.stdin.write((out_frame(n / FPS, n) * 255 + 0.5).astype(np.uint8).tobytes())
         if (n - n0) % 150 == 0: print(f"{n}/{tl.n}", flush=True)

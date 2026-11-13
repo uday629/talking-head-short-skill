@@ -1,6 +1,8 @@
 # spec.json — the only thing you write per video
 Keep it short. Times come from the transcript automatically: you write **words**, not timestamps.
 
+**`look.json` (from `scripts/look.py`) overrides `palette` and `fonts` automatically** — if `$WD/look.json` exists, the engine replaces whatever `palette`/`fonts` you write below with the chosen look's own values. So once you've run `look.py --pick`, don't hand-write `palette`/`fonts` in spec.json at all; only pick card **types** from that look's `cards` list and rotate card `in`/`out` through its `transitions` list. `palette`/`fonts` below only matter if you're running without look.json (legacy `style.py` path).
+
 ```json
 {
  "raw": "raw.mp4", "out": "final.mp4",

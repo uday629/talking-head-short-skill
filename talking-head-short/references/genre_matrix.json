@@ -1,13 +1,15 @@
 {
- "source": "talking_head_genre_editing_matrix.xlsx",
+ "source": "talking_head_genre_editing_matrix_upgraded.xlsx",
  "genres": [
   {
    "no": "1",
    "niche": "Finance / Personal Finance",
    "broll": "Real budgeting situations; bills, receipts, salary day, banking/payment actions, expense tracking, calculator, everyday purchases. Use anonymized or clearly labelled mock data.",
-   "motion": "Clean 2D infographic; animated income\u2192expense flow; category bars; budget buckets; number counters; simple before/after comparisons; subtle UI callouts.",
+   "motion_style": "Clean 2D Vector + Subtle UI Style",
+   "elements": "Animated income→expense flow, category bars, budget buckets, currency counters, glassmorphic card callouts.",
+   "mechanics": "Smooth Ease-Out (Cubic): Bars grow smoothly from bottom/left; numbers roll up with odometer easing; cards slide in with soft 15–20px vertical drift and subtle drop shadow.",
    "palette_text": "Primary #142B45 (trust navy); Secondary #1F8A70 (financial growth); 3rd #E8E2D6 (warm neutral); 4th #D95D39 (risk/attention, sparingly).",
-   "fonts_text": "HEADLINE: Manrope (700\u2013800) | BODY: Inter (400\u2013600) | NUMBERS: Inter (600\u2013700, tabular figures). Google Fonts.",
+   "fonts_text": "HEADLINE: Manrope (700–800) | BODY: Inter (400–600) | NUMBERS: Inter (600–700, tabular figures). Google Fonts.",
    "music": "Minimal lo-fi, warm piano, understated electronic pulse; calm and practical, not luxury-hype.",
    "sfx": "Calculator taps, receipt/paper rustle, soft UI clicks, subtle ticks; restrained transition swishes.",
    "delivery": "Calm authority, practical, reassuring, non-judgmental. Never shame people about money.",
@@ -35,25 +37,28 @@
    "fonts": {
     "headline": {
      "family": "Manrope",
-     "weights": "700\u2013800"
+     "weights": "700–800"
     },
     "body": {
      "family": "Inter",
-     "weights": "400\u2013600"
+     "weights": "400–600"
     },
     "numbers": {
      "family": "Inter",
-     "weights": "600\u2013700, tabular figures"
+     "weights": "600–700, tabular figures"
     }
-   }
+   },
+   "motion": "Clean 2D Vector + Subtle UI Style · Animated income→expense flow, category bars, budget buckets, currency counters, glassmorphic card callouts."
   },
   {
    "no": "2",
    "niche": "Investing / Stock Market / Crypto Education",
    "broll": "Verified market context, dated charts, company/product footage, exchange screens, risk examples, analyst at work. Make demo data visibly illustrative.",
-   "motion": "2D candlestick/chart callouts; trendline reveals; risk/reward scale; portfolio allocation; scenario comparison; timeline; restrained UI animation.",
+   "motion_style": "Tech / Data-UI & Editorial Chart Style",
+   "elements": "2D candlestick/line charts, trendline reveals, risk/reward scales, portfolio pie/donut slices, dated source badges.",
+   "mechanics": "Precision Linear-to-Ease: Trendlines draw left-to-right via stroke trim (Trim Paths); chart nodes pop with minimal overshoot (100%→103%→100%); camera pans smoothly along chart peaks.",
    "palette_text": "Primary #101820 (charcoal); Secondary #2D6A8A (analytical blue); 3rd #D9E2E8 (cool light grey); 4th #E0A526 (caution amber). Red/green only for semantically correct market movement.",
-   "fonts_text": "HEADLINE: Space Grotesk (600\u2013700) | BODY: IBM Plex Sans (400\u2013600) | NUMBERS: IBM Plex Sans (600\u2013700, tabular figures). Google Fonts.",
+   "fonts_text": "HEADLINE: Space Grotesk (600–700) | BODY: IBM Plex Sans (400–600) | NUMBERS: IBM Plex Sans (600–700, tabular figures). Google Fonts.",
    "music": "Restrained electronic pulse, minimal ambient tension, soft tech percussion; avoid casino-like energy.",
    "sfx": "Soft data ticks, chart draw, muted alert, restrained digital whoosh; no jackpot sounds.",
    "delivery": "Measured, skeptical, analytical, composed; never sound certain about uncertain outcomes.",
@@ -81,25 +86,28 @@
    "fonts": {
     "headline": {
      "family": "Space Grotesk",
-     "weights": "600\u2013700"
+     "weights": "600–700"
     },
     "body": {
      "family": "IBM Plex Sans",
-     "weights": "400\u2013600"
+     "weights": "400–600"
     },
     "numbers": {
      "family": "IBM Plex Sans",
-     "weights": "600\u2013700, tabular figures"
+     "weights": "600–700, tabular figures"
     }
-   }
+   },
+   "motion": "Tech / Data-UI & Editorial Chart Style · 2D candlestick/line charts, trendline reveals, risk/reward scales, portfolio pie/donut slices, dated source badges."
   },
   {
    "no": "3",
    "niche": "Business / Entrepreneurship",
    "broll": "Founder/workspace, product making, packaging, customer journey, team operations, storefront, real business process, service delivery.",
-   "motion": "Funnel, unit economics, process flow, customer journey map, market positioning, revenue/cost stack, case-study timeline, comparison cards.",
+   "motion_style": "Modern Isometric / Modular Card UI Style",
+   "elements": "Funnel diagrams, unit economics stacks, customer journey maps, comparison cards, revenue/cost blocks.",
+   "mechanics": "Snappy Spring-Back: Cards stack sequentially with 3-frame stagger; connecting arrows draw smoothly; active metric block scales up (105%) while background dims slightly.",
    "palette_text": "Primary #202B35 (graphite); Secondary #2F6B5B (business green); 3rd #F1EDE4 (warm off-white); 4th #E58A3A (action orange).",
-   "fonts_text": "HEADLINE: Manrope (700\u2013800) | BODY: DM Sans (400\u2013600) | METRICS: DM Sans (600\u2013700). Google Fonts.",
+   "fonts_text": "HEADLINE: Manrope (700–800) | BODY: DM Sans (400–600) | METRICS: DM Sans (600–700). Google Fonts.",
    "music": "Modern corporate groove, mellow upbeat electronic, light percussion; optimistic but grounded.",
    "sfx": "Keyboard, paper, packaging sounds, subtle UI clicks, light whoosh and soft impact.",
    "delivery": "Confident, candid, curious; communicate trade-offs and lessons from failure.",
@@ -124,29 +132,31 @@
      "name": "action orange"
     }
    },
-   "palette_extra": [],
    "fonts": {
     "headline": {
      "family": "Manrope",
-     "weights": "700\u2013800"
+     "weights": "700–800"
     },
     "body": {
      "family": "DM Sans",
-     "weights": "400\u2013600"
+     "weights": "400–600"
     },
     "metrics": {
      "family": "DM Sans",
-     "weights": "600\u2013700"
+     "weights": "600–700"
     }
-   }
+   },
+   "motion": "Modern Isometric / Modular Card UI Style · Funnel diagrams, unit economics stacks, customer journey maps, comparison cards, revenue/cost blocks."
   },
   {
    "no": "4",
    "niche": "Self-help / Personal Development",
    "broll": "Journaling, daily routine, workspace, walking, phone distraction, planning, small habit moments, relatable everyday life.",
-   "motion": "Habit loop, progress ladder, checklist, 3-step framework, cause-and-effect diagram, simple cards and subtle parallax.",
+   "motion_style": "Hand-Drawn Sketch + Warm Editorial Style",
+   "elements": "Habit loops, hand-drawn highlighter strokes, notebook checklists, 3-step ladders, subtle 2.5D photo parallax.",
+   "mechanics": "Organic / Boil Effect (12fps texture): Highlighter sweeps behind keywords like a real marker; pencil circles draw around key words; gentle floating drift (2–3px slow loop) on cards.",
    "palette_text": "Primary #344B5E (muted blue); Secondary #7A9B87 (sage); 3rd #F3EBDD (warm cream); 4th #D5A45B (soft amber).",
-   "fonts_text": "HEADLINE: DM Sans (700) | BODY: Lora (400\u2013500) | QUOTES: Lora Italic (400). Google Fonts.",
+   "fonts_text": "HEADLINE: DM Sans (700) | BODY: Lora (400–500) | QUOTES: Lora Italic (400). Google Fonts.",
    "music": "Warm piano, gentle acoustic guitar, soft ambient beat, mellow lo-fi.",
    "sfx": "Page turn, pencil writing, soft taps, room tone, gentle riser into the insight.",
    "delivery": "Empathetic, reflective, encouraging, grounded; avoid preaching or toxic positivity.",
@@ -178,27 +188,30 @@
     },
     "body": {
      "family": "Lora",
-     "weights": "400\u2013500"
+     "weights": "400–500"
     },
     "quotes": {
      "family": "Lora Italic",
      "weights": "400"
     }
-   }
+   },
+   "motion": "Hand-Drawn Sketch + Warm Editorial Style · Habit loops, hand-drawn highlighter strokes, notebook checklists, 3-step ladders, subtle 2.5D photo parallax."
   },
   {
    "no": "5",
    "niche": "Motivation / Discipline",
    "broll": "Training, practice repetitions, early morning preparation, focused work, setbacks, craft, consistent effort, quiet wins.",
-   "motion": "Kinetic typography for short phrases; milestone counter; progress montage; bold word reveals; simple build-up graphics.",
+   "motion_style": "Bold Kinetic Typography + High-Contrast Impact",
+   "elements": "Full-screen 1–5 word punch phrases, milestone counters, progress bars, subtle grain/film overlay.",
+   "mechanics": "Hard Slam / Expo-Out: Words slam into frame with slight camera shake (4–6px decay); rapid scale-down (140%→100%) synced to beat/vocal stress; zero slow fades.",
    "palette_text": "Primary #171717 (near-black); Secondary #F2F0EA (off-white); 3rd #D94A38 (impact red); 4th #D99B36 (warm amber, sparingly).",
-   "fonts_text": "HEADLINE: Anton (400) | BODY: Inter (500\u2013700) | EMPHASIS: Anton for short punchy words. Google Fonts.",
+   "fonts_text": "HEADLINE: Anton (400) | BODY: Inter (500–700) | EMPHASIS: Anton for short punchy words. Google Fonts.",
    "music": "Cinematic percussion, rising strings, hybrid trailer pulse, energetic instrumental; build then drop for emotional line.",
    "sfx": "Footsteps, breath, fabric movement, gym foley, restrained deep hit, short riser.",
    "delivery": "Conviction, urgency, resolve, controlled intensity; not constant shouting.",
    "hook": "Strong challenge, consequence, direct command, contrast between intention and action.",
    "rhythm": "Fast build with one or two slow holds; hard cuts on action; impact only on the main payoff.",
-   "notes": "Use 1\u20135 word emphasis phrases. Avoid nonstop zooms, constant impacts, shame-based messaging and fake luxury imagery.",
+   "notes": "Use 1–5 word emphasis phrases. Avoid nonstop zooms, constant impacts, shame-based messaging and fake luxury imagery.",
    "palette": {
     "primary": {
      "hex": "#171717",
@@ -217,7 +230,6 @@
      "name": "warm amber, sparingly"
     }
    },
-   "palette_extra": [],
    "fonts": {
     "headline": {
      "family": "Anton",
@@ -225,21 +237,24 @@
     },
     "body": {
      "family": "Inter",
-     "weights": "500\u2013700"
+     "weights": "500–700"
     },
     "emphasis": {
-     "family": "Anton for short punchy words",
-     "weights": ""
+     "family": "Anton",
+     "weights": "400"
     }
-   }
+   },
+   "motion": "Bold Kinetic Typography + High-Contrast Impact · Full-screen 1–5 word punch phrases, milestone counters, progress bars, subtle grain/film overlay."
   },
   {
    "no": "6",
    "niche": "Psychology / Relationships",
    "broll": "Natural conversations, listening, quiet room, phone messages recreated, social situations, everyday behavioral moments; protect privacy.",
-   "motion": "Thought process diagram, decision tree, behavior loop, spectrum scale, relationship dynamics map, simple brain/behavior illustration.",
+   "motion_style": "Hand-Drawn Doodle + Soft Collage Style",
+   "elements": "Thought bubbles, decision trees, behavior loops, spectrum sliders, torn-paper or textured note cards.",
+   "mechanics": "Gentle Elastic & Wiggle: Hand-drawn lines wobble subtly (2–4fps boil); spectrum slider glides smoothly between extremes; cards peel or unfold gently to match reflective pacing.",
    "palette_text": "Primary #34445C (slate blue); Secondary #8B7AA8 (muted lavender); 3rd #F1ECE7 (soft neutral); 4th #C98F76 (warm terracotta).",
-   "fonts_text": "HEADLINE: DM Sans (700) | BODY: Lora (400\u2013500) | SUPPORTING LABELS: Noto Sans (400\u2013600). Google Fonts.",
+   "fonts_text": "HEADLINE: DM Sans (700) | BODY: Lora (400–500) | SUPPORTING LABELS: Noto Sans (400–600). Google Fonts.",
    "music": "Soft ambient, mellow piano, minimal downtempo; avoid melodramatic sadness.",
    "sfx": "Room tone, subtle phone buzz, gentle swish, soft tap; sparse and natural.",
    "delivery": "Curious, compassionate, nuanced, non-judgmental; avoid diagnosing the viewer.",
@@ -271,21 +286,24 @@
     },
     "body": {
      "family": "Lora",
-     "weights": "400\u2013500"
+     "weights": "400–500"
     },
-    "supporting labels": {
+    "supporting_labels": {
      "family": "Noto Sans",
-     "weights": "400\u2013600"
+     "weights": "400–600"
     }
-   }
+   },
+   "motion": "Hand-Drawn Doodle + Soft Collage Style · Thought bubbles, decision trees, behavior loops, spectrum sliders, torn-paper or textured note cards."
   },
   {
    "no": "7",
    "niche": "Health / Healthcare",
    "broll": "Clinician demonstration, accurate anatomy, safe everyday health behavior, medical setting, equipment, evidence-based procedure footage.",
-   "motion": "Accurate anatomical overlays; symptom timeline; step sequence; risk/benefit cards; red-flag guidance; clean diagrams.",
+   "motion_style": "Clean Clinical 2D Vector + Anatomical Overlay",
+   "elements": "Translucent body/organ overlays, symptom timelines, step-by-step checklists, amber/red warning badges.",
+   "mechanics": "Calm, Controlled Ease-In-Out: Anatomical highlights pulse softly (opacity 60%→100%); callout lines extend cleanly from body part to text label; hold frames steady for readability.",
    "palette_text": "Primary #174A63 (clinical blue); Secondary #2A9D8F (teal); 3rd #F4F7F7 (clean white); 4th #E6A23C (warning amber). Use red #C94C4C only for genuine urgent warnings.",
-   "fonts_text": "HEADLINE: Manrope (700) | BODY: Source Sans 3 (400\u2013600) | DATA LABELS: Source Sans 3 (600\u2013700). Google Fonts.",
+   "fonts_text": "HEADLINE: Manrope (700) | BODY: Source Sans 3 (400–600) | DATA LABELS: Source Sans 3 (600–700). Google Fonts.",
    "music": "Light neutral ambient, gentle piano, clean understated pulse; no horror tension.",
    "sfx": "Soft UI ticks, subtle swish, restrained alert only when medically appropriate.",
    "delivery": "Reassuring, precise, responsible, calm; urgency only for real red flags.",
@@ -310,12 +328,6 @@
      "name": "warning amber"
     }
    },
-   "palette_extra": [
-    {
-     "role": "red",
-     "hex": "#C94C4C"
-    }
-   ],
    "fonts": {
     "headline": {
      "family": "Manrope",
@@ -323,21 +335,24 @@
     },
     "body": {
      "family": "Source Sans 3",
-     "weights": "400\u2013600"
+     "weights": "400–600"
     },
-    "data labels": {
+    "data_labels": {
      "family": "Source Sans 3",
-     "weights": "600\u2013700"
+     "weights": "600–700"
     }
-   }
+   },
+   "motion": "Clean Clinical 2D Vector + Anatomical Overlay · Translucent body/organ overlays, symptom timelines, step-by-step checklists, amber/red warning badges."
   },
   {
    "no": "8",
    "niche": "Fitness / Sports Science",
    "broll": "Correct exercise form, coach demonstration, gym details, muscle action, equipment, side-by-side form comparison.",
-   "motion": "Joint-angle lines, rep counter, muscle highlight, movement path, tempo graphic, form comparison, set/rest cards.",
+   "motion_style": "Tech / Biomechanical HUD + Kinetic Callouts",
+   "elements": "Joint-angle arcs, muscle-group highlights, rep/timer counters, movement path arrows, split-screen form boxes.",
+   "mechanics": "Fast-Lock & Track: Angle lines track real body joints frame-by-frame; rep numbers punch in (scale 120%→100% in 4 frames); motion paths trace reps in real time.",
    "palette_text": "Primary #20252B (dark graphite); Secondary #A6C936 (lime); 3rd #E9ECEF (light grey); 4th #F28C38 (energetic orange).",
-   "fonts_text": "HEADLINE: Oswald (600\u2013700) | BODY: Roboto (400\u2013600) | NUMBERS: Roboto (700). Google Fonts.",
+   "fonts_text": "HEADLINE: Oswald (600–700) | BODY: Roboto (400–600) | NUMBERS: Roboto (700). Google Fonts.",
    "music": "Driving electronic, energetic hip-hop instrumental, athletic percussion; avoid overpowering vocals.",
    "sfx": "Foot plant, barbell clink, controlled breath, rope/cloth movement, subtle whoosh.",
    "delivery": "Energetic coach, supportive, specific, safety-aware.",
@@ -365,25 +380,28 @@
    "fonts": {
     "headline": {
      "family": "Oswald",
-     "weights": "600\u2013700"
+     "weights": "600–700"
     },
     "body": {
      "family": "Roboto",
-     "weights": "400\u2013600"
+     "weights": "400–600"
     },
     "numbers": {
      "family": "Roboto",
      "weights": "700"
     }
-   }
+   },
+   "motion": "Tech / Biomechanical HUD + Kinetic Callouts · Joint-angle arcs, muscle-group highlights, rep/timer counters, movement path arrows, split-screen form boxes."
   },
   {
    "no": "9",
    "niche": "Nutrition / Food Science",
    "broll": "Ingredient close-ups, cooking process, portion scales, food labels, texture, meal preparation, relevant kitchen activity.",
-   "motion": "Nutrient comparison, portion visualizer, ingredient breakdown, food process sequence, simple label callouts.",
+   "motion_style": "Tactile Papercraft / Sticker + Clean Infographic",
+   "elements": "Cutout ingredient badges, macro/nutrient bars, portion comparison circles, food label magnifying boxes.",
+   "mechanics": "Playful Pop / Overshoot: Cutout food stickers pop in with white border and slight rotation (-4° to +2°); nutrient bars fill fluidly like liquid; zoom-loupe expands smoothly over labels.",
    "palette_text": "Primary #536B45 (herb green); Secondary #D58B45 (warm orange); 3rd #F5EBDD (cream); 4th #8C4F3D (earth brown).",
-   "fonts_text": "HEADLINE: Nunito Sans (700\u2013800) | BODY: Noto Sans (400\u2013600) | CALLOUTS: Nunito Sans (700). Google Fonts.",
+   "fonts_text": "HEADLINE: Nunito Sans (700–800) | BODY: Noto Sans (400–600) | CALLOUTS: Nunito Sans (700). Google Fonts.",
    "music": "Light acoustic, playful marimba, gentle kitchen groove, warm upbeat instrumental.",
    "sfx": "Chop, sizzle, pour, plate clink, packaging rustle, soft pop.",
    "delivery": "Curious, practical, non-moralizing; avoid fear around food.",
@@ -408,29 +426,31 @@
      "name": "earth brown"
     }
    },
-   "palette_extra": [],
    "fonts": {
     "headline": {
      "family": "Nunito Sans",
-     "weights": "700\u2013800"
+     "weights": "700–800"
     },
     "body": {
      "family": "Noto Sans",
-     "weights": "400\u2013600"
+     "weights": "400–600"
     },
     "callouts": {
      "family": "Nunito Sans",
      "weights": "700"
     }
-   }
+   },
+   "motion": "Tactile Papercraft / Sticker + Clean Infographic · Cutout ingredient badges, macro/nutrient bars, portion comparison circles, food label magnifying boxes."
   },
   {
    "no": "10",
    "niche": "History / Biography",
    "broll": "Archival photographs, maps, artifacts, real locations, paintings, documents; label reenactments and illustrations honestly.",
-   "motion": "Animated map routes, timeline, territory changes, family tree, archival photo parallax, document callouts.",
+   "motion_style": "Papercraft / Archival Parallax + Map Route Style",
+   "elements": "Vintage paper cutouts, animated ink map routes, territory shading, 2.5D archival photo layers, wax/stamp dates.",
+   "mechanics": "2.5D Camera Push + Ink Bleed: Foreground cutouts separate from background photos (parallax depth); red/sepia route lines draw organically across maps; textures animate at 8–12fps stop-motion feel.",
    "palette_text": "Primary #3A3028 (dark sepia); Secondary #8B6B4A (aged bronze); 3rd #D9CCB5 (parchment); 4th #6E7470 (stone grey).",
-   "fonts_text": "HEADLINE: Playfair Display (600\u2013700) | BODY: Source Sans 3 (400\u2013600) | DATES / LABELS: Source Sans 3 (600). Google Fonts.",
+   "fonts_text": "HEADLINE: Playfair Display (600–700) | BODY: Source Sans 3 (400–600) | DATES / LABELS: Source Sans 3 (600). Google Fonts.",
    "music": "Orchestral/folk textures, low strings, period-appropriate instruments, restrained cinematic ambience.",
    "sfx": "Paper, quill, page turn, distant crowd/ambience, subtle cinematic hit.",
    "delivery": "Narrative curiosity, gravity, wonder; measured and respectful.",
@@ -458,25 +478,28 @@
    "fonts": {
     "headline": {
      "family": "Playfair Display",
-     "weights": "600\u2013700"
+     "weights": "600–700"
     },
     "body": {
      "family": "Source Sans 3",
-     "weights": "400\u2013600"
+     "weights": "400–600"
     },
-    "dates / labels": {
+    "dates_labels": {
      "family": "Source Sans 3",
      "weights": "600"
     }
-   }
+   },
+   "motion": "Papercraft / Archival Parallax + Map Route Style · Vintage paper cutouts, animated ink map routes, territory shading, 2.5D archival photo layers, wax/stamp dates."
   },
   {
    "no": "11",
    "niche": "Geopolitics / Current Affairs",
    "broll": "Verified location footage, maps, infrastructure, official statements, dated headlines, relevant public-domain/ licensed visuals.",
-   "motion": "Accurate map routes, stakeholder diagrams, event timeline, comparison cards, source/date callouts.",
+   "motion_style": "Editorial Map / Documentary UI Style",
+   "elements": "Topographic/vector maps, stakeholder node webs, dated headline clippings, territory borders, timeline scrubbers.",
+   "mechanics": "Measured Documentary Pan & Zoom: Camera glides across map coordinates (Ease-In-Out); borders highlight via soft glow; headline cards slide in with crisp 1px border reveals.",
    "palette_text": "Primary #263746 (slate navy); Secondary #54758A (steel blue); 3rd #E5E8E8 (light grey); 4th #B65B50 (muted red, conflict only).",
-   "fonts_text": "HEADLINE: IBM Plex Sans (700) | BODY: IBM Plex Sans (400\u2013600) | MAP LABELS: IBM Plex Sans (500\u2013600). Google Fonts.",
+   "fonts_text": "HEADLINE: IBM Plex Sans (700) | BODY: IBM Plex Sans (400–600) | MAP LABELS: IBM Plex Sans (500–600). Google Fonts.",
    "music": "Restrained documentary pulse, low ambient, minimal percussion; avoid patriotic or partisan cues.",
    "sfx": "Subtle radio texture, paper, map pin, restrained low hit, quiet transition.",
    "delivery": "Serious, analytical, even-handed; avoid outrage performance.",
@@ -508,21 +531,24 @@
     },
     "body": {
      "family": "IBM Plex Sans",
-     "weights": "400\u2013600"
+     "weights": "400–600"
     },
-    "map labels": {
+    "map_labels": {
      "family": "IBM Plex Sans",
-     "weights": "500\u2013600"
+     "weights": "500–600"
     }
-   }
+   },
+   "motion": "Editorial Map / Documentary UI Style · Topographic/vector maps, stakeholder node webs, dated headline clippings, territory borders, timeline scrubbers."
   },
   {
    "no": "12",
    "niche": "Science / Technology / AI",
    "broll": "Real product demos, screen recordings, lab/process footage, hardware macro, real-world use cases, verified experiments.",
-   "motion": "System pipeline, data flow, explainer diagrams, UI callouts, model comparison, step-by-step process animation.",
+   "motion_style": "Tech / Futuristic HUD + Node Pipeline Style",
+   "elements": "System architecture pipelines, glowing data packets, terminal/code UI windows, wireframe models, node networks.",
+   "mechanics": "Digital Snap & Flow: Data dots travel along vector paths; UI windows open with fast vertical wipe + 1-frame flicker; text types on with monospace cursor blink.",
    "palette_text": "Primary #202A44 (deep indigo); Secondary #397B9B (cyan-blue); 3rd #E8EEF2 (cool white); 4th #8B6CC7 (violet accent).",
-   "fonts_text": "HEADLINE: Space Grotesk (600\u2013700) | BODY: Inter (400\u2013600) | TECH LABELS: IBM Plex Sans (500\u2013600). Google Fonts.",
+   "fonts_text": "HEADLINE: Space Grotesk (600–700) | BODY: Inter (400–600) | TECH LABELS: IBM Plex Sans (500–600). Google Fonts.",
    "music": "Minimal electronic, soft synth pulse, clean tech ambient, subtle rhythmic texture.",
    "sfx": "UI clicks, data ticks, restrained digital glitch, soft whoosh, device foley.",
    "delivery": "Curious, precise, cautiously excited; clearly state limitations.",
@@ -550,25 +576,28 @@
    "fonts": {
     "headline": {
      "family": "Space Grotesk",
-     "weights": "600\u2013700"
+     "weights": "600–700"
     },
     "body": {
      "family": "Inter",
-     "weights": "400\u2013600"
+     "weights": "400–600"
     },
-    "tech labels": {
+    "tech_labels": {
      "family": "IBM Plex Sans",
-     "weights": "500\u2013600"
+     "weights": "500–600"
     }
-   }
+   },
+   "motion": "Tech / Futuristic HUD + Node Pipeline Style · System architecture pipelines, glowing data packets, terminal/code UI windows, wireframe models, node networks."
   },
   {
    "no": "13",
    "niche": "Education / Explainer",
    "broll": "Real-world examples, classroom/desk, object demonstration, diagrams, relevant environment, simple experiments.",
-   "motion": "Step-by-step build, labeled diagrams, analogy animation, progress indicator, numbered stages, simple 2D shapes.",
+   "motion_style": "Minimal 2D Vector + Whiteboard / Kinetic Hybrid",
+   "elements": "Analogy icons, numbered stage badges, progressive build diagrams, color-coded keyword pills.",
+   "mechanics": "Step-by-Step Sequential Build: One visual element enters per spoken idea; smooth morphing between simple shapes; clear directional wipes (Left→Right) guiding the viewer's eye.",
    "palette_text": "Primary #264653 (deep teal); Secondary #2A9D8F (teal); 3rd #F3F4ED (warm white); 4th #E9C46A (soft yellow).",
-   "fonts_text": "HEADLINE: Rubik (700\u2013800) | BODY: Inter (400\u2013600) | KEYWORDS: Rubik (600\u2013700). Google Fonts.",
+   "fonts_text": "HEADLINE: Rubik (700–800) | BODY: Inter (400–600) | KEYWORDS: Rubik (600–700). Google Fonts.",
    "music": "Light upbeat instrumental, marimba/piano, soft electronic groove.",
    "sfx": "Marker draw, page flip, soft click, gentle transition swish.",
    "delivery": "Friendly teacher, confident, patient, encouraging.",
@@ -596,25 +625,28 @@
    "fonts": {
     "headline": {
      "family": "Rubik",
-     "weights": "700\u2013800"
+     "weights": "700–800"
     },
     "body": {
      "family": "Inter",
-     "weights": "400\u2013600"
+     "weights": "400–600"
     },
     "keywords": {
      "family": "Rubik",
-     "weights": "600\u2013700"
+     "weights": "600–700"
     }
-   }
+   },
+   "motion": "Minimal 2D Vector + Whiteboard / Kinetic Hybrid · Analogy icons, numbered stage badges, progressive build diagrams, color-coded keyword pills."
   },
   {
    "no": "14",
    "niche": "Law / Civic Rights / Public Services",
    "broll": "Forms, public office exterior, document close-ups with personal data hidden, process footage, relevant official websites.",
-   "motion": "Process flow, eligibility checklist, deadline timeline, document callouts, decision tree.",
+   "motion_style": "Official Document UI + Structured Process Style",
+   "elements": "Highlighted legal/form clauses, eligibility checkboxes, deadline calendars, step-by-step flowcharts.",
+   "mechanics": "Crisp, Authoritative Slide: Document zooms smoothly to the exact clause; yellow/gold highlight bar sweeps across text; checkmarks draw cleanly into boxes without bounce.",
    "palette_text": "Primary #1F3A5F (institutional navy); Secondary #527C8A (muted teal); 3rd #F2F3F0 (off-white); 4th #C5A46D (muted gold).",
-   "fonts_text": "HEADLINE: Libre Franklin (700) | BODY: Noto Sans (400\u2013600) | LEGAL / INFO LABELS: Noto Sans (600\u2013700). Google Fonts.",
+   "fonts_text": "HEADLINE: Libre Franklin (700) | BODY: Noto Sans (400–600) | LEGAL / INFO LABELS: Noto Sans (600–700). Google Fonts.",
    "music": "Neutral corporate ambient, calm piano, understated pulse.",
    "sfx": "Paper shuffle, stamp, subtle UI ticks, restrained page transitions.",
    "delivery": "Clear, reassuring, careful, measured; never alarmist.",
@@ -646,21 +678,24 @@
     },
     "body": {
      "family": "Noto Sans",
-     "weights": "400\u2013600"
+     "weights": "400–600"
     },
-    "legal / info labels": {
+    "legal_info_labels": {
      "family": "Noto Sans",
-     "weights": "600\u2013700"
+     "weights": "600–700"
     }
-   }
+   },
+   "motion": "Official Document UI + Structured Process Style · Highlighted legal/form clauses, eligibility checkboxes, deadline calendars, step-by-step flowcharts."
   },
   {
    "no": "15",
    "niche": "Productivity / Software Tutorials",
    "broll": "Actual screen recording, cursor close-ups, before/after workflow, shortcut demonstration, desk setup.",
-   "motion": "Cursor highlight, zoom box, numbered steps, keyboard shortcut overlays, progress bar, UI annotation.",
+   "motion_style": "Native Screen-UI + Dynamic Zoom/Cursor Style",
+   "elements": "Custom spotlight cursors, magnified UI zoom boxes, floating keyboard shortcut caps (Ctrl+C), progress bars.",
+   "mechanics": "1:1 UI Responsiveness: Cursor glides smoothly with click-ripple effect; zoom boxes scale up with smooth spring (250ms); shortcut keycaps press down (scale 92%) on click.",
    "palette_text": "Primary #273444 (charcoal blue); Secondary #477A9E (blue); 3rd #F4F6F8 (near-white); 4th #E0A13A (amber highlight).",
-   "fonts_text": "HEADLINE: Inter (700) | BODY: Inter (400\u2013600) | UI LABELS: Roboto (500\u2013600) when matching Android/product UI. Google Fonts.",
+   "fonts_text": "HEADLINE: Inter (700) | BODY: Inter (400–600) | UI LABELS: Roboto (500–600) when matching Android/product UI. Google Fonts.",
    "music": "Light electronic groove, unobtrusive lo-fi, soft upbeat pulse.",
    "sfx": "Mouse click, keyboard taps, muted notification, subtle confirmation tick.",
    "delivery": "Helpful, brisk, competent, patient at complex steps.",
@@ -692,21 +727,28 @@
     },
     "body": {
      "family": "Inter",
-     "weights": "400\u2013600"
+     "weights": "400–600"
+    },
+    "ui_labels": {
+     "family": "Roboto",
+     "weights": "500–600"
     }
-   }
+   },
+   "motion": "Native Screen-UI + Dynamic Zoom/Cursor Style · Custom spotlight cursors, magnified UI zoom boxes, floating keyboard shortcut caps (Ctrl+C), progress bars."
   },
   {
    "no": "16",
    "niche": "Travel / Culture / Food",
    "broll": "Location-specific streets, transport, food preparation, local craft, architecture, ambient details; film respectfully.",
-   "motion": "Animated route map, location pins, itinerary cards, price/time labels, subtle photo parallax.",
+   "motion_style": "Postcard / Scrapbook Collage + Route Map Style",
+   "elements": "Animated flight/road routes, location pins, polaroid/postcard frames, price & time tags, stamp overlays.",
+   "mechanics": "Tactile Drop & Drift: Location pins bounce onto map (Overshoot); postcards drop in at slight angles (±3°) with subtle paper texture; smooth match-cut transitions between locations.",
    "palette_text": "Primary #28536B (travel blue); Secondary #D28B50 (sunset orange); 3rd #F3EBDD (sand); 4th #55745C (nature green).",
-   "fonts_text": "HEADLINE: Outfit (700) | BODY: Lora (400\u2013500) | LOCATION / CAPTIONS: Noto Sans (400\u2013600). Google Fonts.",
+   "fonts_text": "HEADLINE: Outfit (700) | BODY: Lora (400–500) | LOCATION / CAPTIONS: Noto Sans (400–600). Google Fonts.",
    "music": "Regionally appropriate instrumental, acoustic/folk textures, warm light groove.",
    "sfx": "Street ambience, footsteps, market chatter, utensil sounds, transport ambience.",
    "delivery": "Wonder, warmth, discovery, respectful curiosity.",
-   "hook": "Hidden place, local detail, unexpected comparison, \u201cwhat to do first\u201d hook.",
+   "hook": "Hidden place, local detail, unexpected comparison, “what to do first” hook.",
    "rhythm": "Medium-fast montage with slower establishing shots; location reveals and match cuts.",
    "notes": "Verify place names, prices and seasonal context. Avoid cultural stereotypes and intrusive filming.",
    "palette": {
@@ -734,21 +776,24 @@
     },
     "body": {
      "family": "Lora",
-     "weights": "400\u2013500"
+     "weights": "400–500"
     },
-    "location / captions": {
+    "location_captions": {
      "family": "Noto Sans",
-     "weights": "400\u2013600"
+     "weights": "400–600"
     }
-   }
+   },
+   "motion": "Postcard / Scrapbook Collage + Route Map Style · Animated flight/road routes, location pins, polaroid/postcard frames, price & time tags, stamp overlays."
   },
   {
    "no": "17",
    "niche": "True Crime / Mystery",
    "broll": "Verified locations, documents, evidence-style recreations clearly labelled, atmospheric empty spaces, non-graphic context footage.",
-   "motion": "Evidence timeline, map route, relationship chart, document callouts, sequence reconstruction with labels.",
+   "motion_style": "Dark Noir / Evidence Board + Documentary UI",
+   "elements": "Red-string connection webs, redacted document callouts, forensic timelines, surveillance-style map zooms.",
+   "mechanics": "Slow Tension Creep: Continuous ultra-slow scale-in (100%→106%); red strings draw tightly between suspect/event cards; typewriter text reveal with muted flicker.",
    "palette_text": "Primary #252C33 (charcoal); Secondary #455B68 (slate); 3rd #C8C7BE (stone); 4th #A77A45 (muted amber).",
-   "fonts_text": "HEADLINE: Oswald (600\u2013700) | BODY: IBM Plex Sans (400\u2013600) | CASE / TIMELINE LABELS: IBM Plex Sans (500\u2013600). Google Fonts.",
+   "fonts_text": "HEADLINE: Oswald (600–700) | BODY: IBM Plex Sans (400–600) | CASE / TIMELINE LABELS: IBM Plex Sans (500–600). Google Fonts.",
    "music": "Low drone, restrained pulse, sparse strings, minimal percussion; controlled suspense.",
    "sfx": "Room tone, distant ambience, paper handling, subtle low hit, quiet texture.",
    "delivery": "Controlled suspense, sober empathy, respect for victims; avoid theatrical excitement.",
@@ -776,25 +821,28 @@
    "fonts": {
     "headline": {
      "family": "Oswald",
-     "weights": "600\u2013700"
+     "weights": "600–700"
     },
     "body": {
      "family": "IBM Plex Sans",
-     "weights": "400\u2013600"
+     "weights": "400–600"
     },
-    "case / timeline labels": {
+    "case_timeline_labels": {
      "family": "IBM Plex Sans",
-     "weights": "500\u2013600"
+     "weights": "500–600"
     }
-   }
+   },
+   "motion": "Dark Noir / Evidence Board + Documentary UI · Red-string connection webs, redacted document callouts, forensic timelines, surveillance-style map zooms."
   },
   {
    "no": "18",
    "niche": "Career / Leadership / Workplace",
    "broll": "Real workplace, collaboration, presentation, portfolio, interview preparation, feedback and mentoring moments.",
-   "motion": "Career ladder, skill matrix, feedback loop, decision framework, role comparison cards.",
+   "motion_style": "Clean Corporate UI + Framework Diagram Style",
+   "elements": "Career ladders, 2x2 priority matrices, feedback loops, role comparison cards, Slack/email-style prompt bubbles.",
+   "mechanics": "Structured Grid Alignment: Matrix quadrants expand cleanly from center; cards glide into aligned grid slots with crisp deceleration; active quadrant highlights via border glow.",
    "palette_text": "Primary #26394A (professional navy); Secondary #4F7D72 (muted green); 3rd #F1F0EA (warm white); 4th #D49A52 (muted amber).",
-   "fonts_text": "HEADLINE: Manrope (700\u2013800) | BODY: Source Sans 3 (400\u2013600) | KEY POINTS: Manrope (600\u2013700). Google Fonts.",
+   "fonts_text": "HEADLINE: Manrope (700–800) | BODY: Source Sans 3 (400–600) | KEY POINTS: Manrope (600–700). Google Fonts.",
    "music": "Modern light corporate, mellow upbeat, soft piano/electronic blend.",
    "sfx": "Keyboard, page turn, subtle UI click, light office ambience.",
    "delivery": "Supportive mentor, honest, constructive, confident but not arrogant.",
@@ -819,29 +867,31 @@
      "name": "muted amber"
     }
    },
-   "palette_extra": [],
    "fonts": {
     "headline": {
      "family": "Manrope",
-     "weights": "700\u2013800"
+     "weights": "700–800"
     },
     "body": {
      "family": "Source Sans 3",
-     "weights": "400\u2013600"
+     "weights": "400–600"
     },
-    "key points": {
+    "key_points": {
      "family": "Manrope",
-     "weights": "600\u2013700"
+     "weights": "600–700"
     }
-   }
+   },
+   "motion": "Clean Corporate UI + Framework Diagram Style · Career ladders, 2x2 priority matrices, feedback loops, role comparison cards, Slack/email-style prompt bubbles."
   },
   {
    "no": "19",
    "niche": "Parenting / Family",
    "broll": "Everyday family activities with consent, hands/toys/activities, parent-child interaction, home routines; protect children's privacy.",
-   "motion": "Routine cards, age-stage timeline, simple choice diagram, step-by-step routine animation.",
+   "motion_style": "Warm Hand-Drawn + Soft Card / Scrapbook Style",
+   "elements": "Daily routine cards, age-stage milestones, gentle choice trees, friendly icon badges, soft rounded callouts.",
+   "mechanics": "Soft, Rounded Bounce: Cards float in with gentle ease-out (no harsh impacts); hand-drawn underlines sweep smoothly; icons gently nod or tilt (±5°) to feel approachable.",
    "palette_text": "Primary #47645C (soft forest); Secondary #8BA7A0 (sage); 3rd #F6EFE4 (warm cream); 4th #D7A16D (soft peach).",
-   "fonts_text": "HEADLINE: Nunito Sans (700\u2013800) | BODY: Source Sans 3 (400\u2013600) | SUPPORTING TEXT: Source Sans 3 (500\u2013600). Google Fonts.",
+   "fonts_text": "HEADLINE: Nunito Sans (700–800) | BODY: Source Sans 3 (400–600) | SUPPORTING TEXT: Source Sans 3 (500–600). Google Fonts.",
    "music": "Soft acoustic, warm piano, light ambient; gentle and reassuring.",
    "sfx": "Toy movement, page turn, room tone, soft fabric and household foley.",
    "delivery": "Gentle, validating, patient, non-judgmental.",
@@ -869,25 +919,28 @@
    "fonts": {
     "headline": {
      "family": "Nunito Sans",
-     "weights": "700\u2013800"
+     "weights": "700–800"
     },
     "body": {
      "family": "Source Sans 3",
-     "weights": "400\u2013600"
+     "weights": "400–600"
     },
-    "supporting text": {
+    "supporting_text": {
      "family": "Source Sans 3",
-     "weights": "500\u2013600"
+     "weights": "500–600"
     }
-   }
+   },
+   "motion": "Warm Hand-Drawn + Soft Card / Scrapbook Style · Daily routine cards, age-stage milestones, gentle choice trees, friendly icon badges, soft rounded callouts."
   },
   {
    "no": "20",
    "niche": "Fashion / Beauty / Grooming",
    "broll": "Fabric texture, product detail, fit demonstrations, styling variations, grooming process, accurate product close-ups.",
-   "motion": "Before/after layout, silhouette guides, color swatches, step labels, product feature callouts.",
+   "motion_style": "Editorial Magazine + Clean Split-Screen UI",
+   "elements": "Before/after wipe sliders, silhouette proportion lines, color palette swatches, ingredient/product callout pins.",
+   "mechanics": "Silky Fashion Wipe: Vertical/horizontal split-screen line glides smoothly; color swatches fan out like a deck; thin hairline pointers extend gracefully to outfit/product details.",
    "palette_text": "Primary #282629 (soft black); Secondary #B58A82 (dusty rose); 3rd #F2EDE8 (ivory); 4th #A7A18F (taupe).",
-   "fonts_text": "HEADLINE: Cormorant Garamond (600\u2013700) | BODY: Manrope (400\u2013600) | LABELS: Manrope (600\u2013700). Google Fonts.",
+   "fonts_text": "HEADLINE: Cormorant Garamond (600–700) | BODY: Manrope (400–600) | LABELS: Manrope (600–700). Google Fonts.",
    "music": "Stylish light electronic, fashion-house percussion, mellow groove.",
    "sfx": "Fabric swish, zipper, product click, soft camera shutter, light whoosh.",
    "delivery": "Confident, playful, inclusive, tasteful.",
@@ -915,29 +968,32 @@
    "fonts": {
     "headline": {
      "family": "Cormorant Garamond",
-     "weights": "600\u2013700"
+     "weights": "600–700"
     },
     "body": {
      "family": "Manrope",
-     "weights": "400\u2013600"
+     "weights": "400–600"
     },
     "labels": {
      "family": "Manrope",
-     "weights": "600\u2013700"
+     "weights": "600–700"
     }
-   }
+   },
+   "motion": "Editorial Magazine + Clean Split-Screen UI · Before/after wipe sliders, silhouette proportion lines, color palette swatches, ingredient/product callout pins."
   },
   {
    "no": "21",
    "niche": "Art / Design / Filmmaking",
    "broll": "Behind-the-scenes, lighting setup, camera movement, timeline, layers, raw-vs-final comparison, materials and process.",
-   "motion": "Frame guides, layer breakdown, color wheels, motion paths, lighting diagrams, before/after wipe, tracking callouts.",
+   "motion_style": "Creative Software UI + Breakdown Layer Style",
+   "elements": "Rule-of-thirds/frame guides, exploded 3D/2D layer stacks, color wheels, Bezier motion paths, lighting setups.",
+   "mechanics": "Layer Explode & Scrub: Composite layers separate along Z-axis to show breakdown; Bezier handles animate live; before/after color-grade wipes sweep cleanly across frame.",
    "palette_text": "Primary #262B31 (graphite); Secondary #527B8C (steel blue); 3rd #ECEBE6 (warm white); 4th #D58A45 (creative amber).",
-   "fonts_text": "HEADLINE: Syne (600\u2013700) | BODY: DM Sans (400\u2013600) | EXPERIMENTAL CALLOUTS: Syne (700\u2013800). Google Fonts.",
+   "fonts_text": "HEADLINE: Syne (600–700) | BODY: DM Sans (400–600) | EXPERIMENTAL CALLOUTS: Syne (700–800). Google Fonts.",
    "music": "Minimal creative electronic, cinematic ambient, subtle groove.",
    "sfx": "Switch click, marker, camera shutter, soft whoosh, tactile foley.",
    "delivery": "Passionate craft expert, curious, precise, demonstrative.",
-   "hook": "Result-first reveal, \u201cwhy this works\u201d, common mistake, process breakdown.",
+   "hook": "Result-first reveal, “why this works”, common mistake, process breakdown.",
    "rhythm": "Medium pace; demonstrate in steps; use split-screen comparisons and purposeful speed ramps.",
    "notes": "Show settings and context. Avoid unexplained jargon, cluttered overlays and effects without a teaching purpose.",
    "palette": {
@@ -961,25 +1017,28 @@
    "fonts": {
     "headline": {
      "family": "Syne",
-     "weights": "600\u2013700"
+     "weights": "600–700"
     },
     "body": {
      "family": "DM Sans",
-     "weights": "400\u2013600"
+     "weights": "400–600"
     },
-    "experimental callouts": {
+    "experimental_callouts": {
      "family": "Syne",
-     "weights": "700\u2013800"
+     "weights": "700–800"
     }
-   }
+   },
+   "motion": "Creative Software UI + Breakdown Layer Style · Rule-of-thirds/frame guides, exploded 3D/2D layer stacks, color wheels, Bezier motion paths, lighting setups."
   },
   {
    "no": "22",
    "niche": "News / Journalism / Social Issues",
    "broll": "Verified interviews, location footage, public records, official statements, dated headlines, contextual street footage.",
-   "motion": "Timeline, quote cards, data charts, location map, source labels, comparison graphics.",
+   "motion_style": "Broadcast / Editorial Lower-Third & Quote Style",
+   "elements": "Verified source badges, highlighted quote cards, clean bar/line charts, location lower-thirds, date stamps.",
+   "mechanics": "Fast Broadcast Entry: Lower-third bars wipe in rapidly (150ms); key quote lines highlight sequentially; zero playful bounce—strictly crisp, journalistic movement.",
    "palette_text": "Primary #202F3E (news navy); Secondary #456B83 (steel blue); 3rd #F1F2F0 (paper white); 4th #C45A4A (alert red, sparingly).",
-   "fonts_text": "HEADLINE: Libre Franklin (700) | BODY: IBM Plex Sans (400\u2013600) | LOWER-THIRDS: IBM Plex Sans (500\u2013600). Google Fonts.",
+   "fonts_text": "HEADLINE: Libre Franklin (700) | BODY: IBM Plex Sans (400–600) | LOWER-THIRDS: IBM Plex Sans (500–600). Google Fonts.",
    "music": "Restrained documentary bed, subtle pulse, minimal piano; no sensational stingers.",
    "sfx": "Newsroom room tone, paper, soft alert tick, restrained transition.",
    "delivery": "Credible, composed, empathetic, evidence-led.",
@@ -1011,17 +1070,24 @@
     },
     "body": {
      "family": "IBM Plex Sans",
-     "weights": "400\u2013600"
+     "weights": "400–600"
+    },
+    "lower-thirds": {
+     "family": "IBM Plex Sans",
+     "weights": "500–600"
     }
-   }
+   },
+   "motion": "Broadcast / Editorial Lower-Third & Quote Style · Verified source badges, highlighted quote cards, clean bar/line charts, location lower-thirds, date stamps."
   },
   {
    "no": "23",
    "niche": "Comedy / Commentary / Pop Culture",
    "broll": "Relevant memes or clips with rights awareness, expressive hands/body language, objects, reaction cutaways, context footage.",
-   "motion": "Punchline text, simple visual callbacks, reaction zoom, comparison cards, lightweight doodles.",
+   "motion_style": "Meme / Cutout Collage + Expressive Kinetic Text",
+   "elements": "Cutout PNG props, hand-drawn reaction doodles, exaggerated punchline captions, meme/tweet cards.",
+   "mechanics": "Snappy Pop / Boil / Freeze-Frame: Zero-ease instant pops (1–2 frames) for comedic timing; rapid punch-in zoom on presenter's face; hand-drawn squiggles vibrate at 8fps.",
    "palette_text": "Primary #24212B (deep plum-charcoal); Secondary #F2B544 (bright yellow); 3rd #F6F0E7 (cream); 4th #D96C5C (coral).",
-   "fonts_text": "HEADLINE: Archivo Black (400) | BODY: DM Sans (400\u2013600) | PUNCHLINE EMPHASIS: Archivo Black. Google Fonts.",
+   "fonts_text": "HEADLINE: Archivo Black (400) | BODY: DM Sans (400–600) | PUNCHLINE EMPHASIS: Archivo Black. Google Fonts.",
    "music": "Upbeat funk, quirky plucks, light hip-hop, playful electronic groove.",
    "sfx": "Pop, click, record scratch sparingly, short comedic sting, room tone.",
    "delivery": "Playful, expressive, conversational; timing matters more than loudness.",
@@ -1053,21 +1119,24 @@
     },
     "body": {
      "family": "DM Sans",
-     "weights": "400\u2013600"
+     "weights": "400–600"
     },
-    "punchline emphasis": {
+    "punchline_emphasis": {
      "family": "Archivo Black",
-     "weights": ""
+     "weights": "400"
     }
-   }
+   },
+   "motion": "Meme / Cutout Collage + Expressive Kinetic Text · Cutout PNG props, hand-drawn reaction doodles, exaggerated punchline captions, meme/tweet cards."
   },
   {
    "no": "24",
    "niche": "Real Estate / Architecture",
    "broll": "Property walkthrough, room details, exterior, neighborhood, floor plan, material close-ups, daylight changes.",
-   "motion": "Floor-plan labels, room dimensions, location map, feature callouts, before/after renovation, simple 3D layout.",
+   "motion_style": "Architectural Blueprint + Clean 3D/2D Callout Style",
+   "elements": "Animated floor-plan lines, room dimension arrows, neighborhood map pins, before/after renovation wipes.",
+   "mechanics": "Architectural Line-Draw: Floor-plan walls and dimension arrows draw cleanly from corner to corner; callout tags anchor smoothly to room features during camera movement.",
    "palette_text": "Primary #34424A (architectural slate); Secondary #78928A (sage); 3rd #F2EFE8 (limestone); 4th #B68A58 (wood/bronze).",
-   "fonts_text": "HEADLINE: Manrope (700\u2013800) | BODY: Lato (400\u2013600) | PROPERTY / PRICE DATA: Lato (600\u2013700). Google Fonts.",
+   "fonts_text": "HEADLINE: Manrope (700–800) | BODY: Lato (400–600) | PROPERTY / PRICE DATA: Lato (600–700). Google Fonts.",
    "music": "Minimal premium ambient, soft piano, light modern groove.",
    "sfx": "Door handle, footsteps, room tone, soft UI ticks, subtle whoosh.",
    "delivery": "Confident, welcoming, informative; avoid overpromising.",
@@ -1095,17 +1164,117 @@
    "fonts": {
     "headline": {
      "family": "Manrope",
-     "weights": "700\u2013800"
+     "weights": "700–800"
     },
     "body": {
      "family": "Lato",
-     "weights": "400\u2013600"
+     "weights": "400–600"
     },
-    "property / price data": {
+    "property_price_data": {
      "family": "Lato",
-     "weights": "600\u2013700"
+     "weights": "600–700"
     }
-   }
+   },
+   "motion": "Architectural Blueprint + Clean 3D/2D Callout Style · Animated floor-plan lines, room dimension arrows, neighborhood map pins, before/after renovation wipes."
+  }
+ ],
+ "motion_guide": [
+  {
+   "category": "1. Clean 2D Vector / Infographic",
+   "visual": "Flat geometric shapes, crisp 1–2px strokes, subtle drop shadows, organized grid layouts, high legibility.",
+   "text": "Smooth directional slide-in (15–20px) paired with opacity fade; clean line-by-line mask reveals; zero chaotic bounce.",
+   "elements": "Bars and charts grow smoothly from baseline; icons scale gently (90%→100%); callout lines extend cleanly from anchor dots.",
+   "fps_easing": "30 or 60 fps | Smooth Cubic Ease-Out (no overshoot)",
+   "signature": "Trim Paths, Odometer Number Counters, Subtle Drop Shadows, Masked Text Reveals.",
+   "niches": "Finance, Healthcare, Education, Law & Civic Rights, Career & Workplace."
+  },
+  {
+   "category": "2. UI / SaaS / Screen-Style Motion",
+   "visual": "Rounded cards, glassmorphism panels, custom cursors, toggles, notifications, keyboard shortcut keycaps.",
+   "text": "Monospace or clean sans typing reveals; pill badges popping in; highlighted text marker sweeps across key phrases.",
+   "elements": "Interactive cursor glides with click-ripple; UI panels expand with snappy spring; spotlight zoom boxes magnify active areas.",
+   "fps_easing": "60 fps | Snappy Spring or Quart Ease-Out (150–250ms)",
+   "signature": "Cursor Click Ripples, Magnifier Zoom Loupes, Glassmorphism Blur, Keycap Press Scale (92%).",
+   "niches": "Productivity & Tutorials, Science/Tech/AI, Investing, Business & Startups."
+  },
+  {
+   "category": "3. Tech / HUD / Node Pipeline",
+   "visual": "Glowing wireframes, grid overlays, dark/indigo canvases, telemetry readouts, interconnected node networks.",
+   "text": "Digital character scramble/decode reveal; fast vertical wipe with 1-frame flicker; blinking terminal cursors.",
+   "elements": "Glowing data dots travel along vector paths; nodes pulse upon connection; 3D/2D wireframe grids rotate slowly.",
+   "fps_easing": "30 or 60 fps | Linear Data Flow + Fast Expo-Out Snaps",
+   "signature": "Path Tracing (Trim Paths), Subtle Chromatic Aberration, Telemetry Counters, Grid Parallax.",
+   "niches": "Science/Tech/AI, Crypto & Market Data, Fitness Biomechanics."
+  },
+  {
+   "category": "4. Hand-Drawn / Doodle Sketch",
+   "visual": "Rough brush/pencil strokes, highlighter marker sweeps, notebook/cream paper grain, organic imperfect shapes.",
+   "text": "Handwritten stroke reveals; highlighter bar sweeps behind keywords; subtle frame-by-frame edge wobble (boil).",
+   "elements": "Sketch arrows draw organically toward subject; circles loop around key items; cards drift gently like floating paper.",
+   "fps_easing": "12–15 fps (Posterize Time) | Organic / Gentle Elastic",
+   "signature": "Turbulent Displace (Boil Effect), Posterize Time (12fps), Brush Stroke Reveal, Paper Grain Overlay.",
+   "niches": "Self-Help, Psychology & Relationships, Parenting, Comedy & Commentary."
+  },
+  {
+   "category": "5. Papercraft / Mixed-Media Collage",
+   "visual": "Torn paper edges, cutout photos with white sticker borders, tape/stamp overlays, halftone print textures, 2.5D depth.",
+   "text": "Cutout ransom/label strips slapping onto screen; typewriter stamps; slightly tilted angle drops (±3°).",
+   "elements": "Stop-motion stepped entry; layered Z-space camera parallax separating foreground cutouts from background photos.",
+   "fps_easing": "8–12 fps | Stepped Stop-Motion + Tactile Overshoot Drop",
+   "signature": "2.5D Multi-Plane Camera, Halftone/Film Grain, Drop Shadow Depth, Page Peel / Fold Transitions.",
+   "niches": "History & Biography, Travel & Culture, Nutrition & Food, Pop Culture."
+  },
+  {
+   "category": "6. Bold Kinetic Typography",
+   "visual": "Full-screen oversized display fonts, high-contrast color blocks, minimal icons, rhythm- and voice-driven layout.",
+   "text": "Word-by-word slams synced to vocal stress; rapid scale punches (135%→100%); split-word mask slides.",
+   "elements": "Minimal background shapes pulse on beat; micro camera shake (4–6px decay) on heavy impact words; hard cuts.",
+   "fps_easing": "30 or 60 fps | High-Velocity Expo-Out (Hard Slam)",
+   "signature": "Impact Scale Punch, Micro Camera Shake, Motion Blur, Beat-Synced Hard Cuts.",
+   "niches": "Motivation & Discipline, Strong 3-Second Hooks, Comedy Punchlines."
+  },
+  {
+   "category": "7. Documentary / Editorial Map & Board",
+   "visual": "Topographic maps, archival newspaper clippings, redacted documents, string connections, broadcast lower-thirds.",
+   "text": "Yellow/amber highlighter sweeps across document text; crisp lower-third wipes; typewriter date/location stamps.",
+   "elements": "Smooth camera pan/zoom across map coordinates; red route/connection lines draw between pins; slow tension push-in.",
+   "fps_easing": "24 or 30 fps | Controlled Ease-In-Out & Continuous Slow Creep",
+   "signature": "3D Map Camera Fly-Through, Redaction Bar Wipe, Vignette & Film Grain, Highlight Sweep.",
+   "niches": "Geopolitics, True Crime & Mystery, News & Journalism, Real Estate."
+  }
+ ],
+ "palette_roles": [
+  {
+   "role": "Primary",
+   "purpose": "Main brand / dominant visual anchor",
+   "coverage": "Approx. 50–60%",
+   "example": "Background panels, main title blocks, major graphic areas",
+   "accessibility": "Text on it must have strong contrast",
+   "important": "Not a rigid percentage; adapt to footage and brand."
+  },
+  {
+   "role": "Secondary",
+   "purpose": "Support color that creates hierarchy",
+   "coverage": "Approx. 20–30%",
+   "example": "Subheadings, chart series, secondary panels, labels",
+   "accessibility": "Check contrast with both primary and neutral",
+   "important": "Keep meaning consistent across the video."
+  },
+  {
+   "role": "3rd / Neutral",
+   "purpose": "Breathing room and readability",
+   "coverage": "Approx. 10–20%",
+   "example": "Caption backing, negative space, cards, backgrounds",
+   "accessibility": "Prefer high contrast for small text",
+   "important": "Often off-white, cream, grey or pale neutral."
+  },
+  {
+   "role": "4th / Accent",
+   "purpose": "Attention, status or one key highlight",
+   "coverage": "Approx. 5–10%",
+   "example": "Key number, warning, selected step, CTA detail",
+   "accessibility": "Never rely on color alone; add label/icon",
+   "important": "Use sparingly so it retains meaning."
   }
  ],
  "font_library": [
@@ -1262,48 +1431,6 @@
    "weights": "500, 600, 700, 800",
    "role": "Condensed display option for punchy short-form graphics.",
    "url": "https://fonts.google.com/specimen/Barlow+Condensed"
-  }
- ],
- "palette_roles": [
-  {
-   "role": "ROLE",
-   "purpose": "PURPOSE",
-   "coverage": "SUGGESTED COVERAGE",
-   "example": "EXAMPLE USE",
-   "accessibility": "ACCESSIBILITY CHECK",
-   "important": "IMPORTANT"
-  },
-  {
-   "role": "Primary",
-   "purpose": "Main brand / dominant visual anchor",
-   "coverage": "Approx. 50\u201360%",
-   "example": "Background panels, main title blocks, major graphic areas",
-   "accessibility": "Text on it must have strong contrast",
-   "important": "Not a rigid percentage; adapt to footage and brand."
-  },
-  {
-   "role": "Secondary",
-   "purpose": "Support color that creates hierarchy",
-   "coverage": "Approx. 20\u201330%",
-   "example": "Subheadings, chart series, secondary panels, labels",
-   "accessibility": "Check contrast with both primary and neutral",
-   "important": "Keep meaning consistent across the video."
-  },
-  {
-   "role": "3rd / Neutral",
-   "purpose": "Breathing room and readability",
-   "coverage": "Approx. 10\u201320%",
-   "example": "Caption backing, negative space, cards, backgrounds",
-   "accessibility": "Prefer high contrast for small text",
-   "important": "Often off-white, cream, grey or pale neutral."
-  },
-  {
-   "role": "4th / Accent",
-   "purpose": "Attention, status or one key highlight",
-   "coverage": "Approx. 5\u201310%",
-   "example": "Key number, warning, selected step, CTA detail",
-   "accessibility": "Never rely on color alone; add label/icon",
-   "important": "Use sparingly so it retains meaning."
   }
  ]
 }

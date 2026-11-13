@@ -28,9 +28,17 @@ def load_model(model):
             print(name, "mirror failed:", str(e)[:100])
     raise RuntimeError("no transcription model reachable")
 
+def wav_array(path):
+    """Read a 16kHz mono wav straight into float32 samples, bypassing faster-whisper's own av.open() decode path.
+    Some sandboxes ship a pyav version whose av.open() doesn't accept the 'metadata_errors' kwarg faster-whisper
+    passes, which raises `TypeError: open() got an unexpected keyword argument 'metadata_errors'`. ffmpeg already
+    wrote this file as 16kHz mono, so we can hand transcribe() a plain ndarray and skip that code path entirely."""
+    with wave.open(path) as w:
+        return np.frombuffer(w.readframes(w.getnframes()), np.int16).astype(np.float32) / 32768.0
+
 def transcribe(wav, model):
     m, used = load_model(model)
-    segs, info = m.transcribe(wav, word_timestamps=True, beam_size=5, condition_on_previous_text=False)
+    segs, info = m.transcribe(wav_array(wav), word_timestamps=True, beam_size=5, condition_on_previous_text=False)
     words = [dict(w=w.word.strip(), s=round(w.start, 2), e=round(w.end, 2), p=round(w.probability, 2)) for s in segs for w in s.words]
     return words, info.language
 
@@ -129,7 +137,7 @@ def main():
     spans, why, sugg = bad_spans(words)
     if "--remove" in sys.argv: spans += json.loads(sys.argv[sys.argv.index("--remove") + 1]); why.append("+manual")
     segs = speech_segments(wav, spans)
-    P.update(face_eye(raw, P)); json.dump(P, open(os.path.join(wd, "probe.json"), "w"))
+    P.update(face_eye(raw, P)); P["raw"] = os.path.abspath(raw); json.dump(P, open(os.path.join(wd, "probe.json"), "w"))
     json.dump(segs, open(os.path.join(wd, "segments.json"), "w"))
     grid(raw, P, os.path.join(wd, "frames.jpg"))
     kept = sum(e - s for s, e in segs)
