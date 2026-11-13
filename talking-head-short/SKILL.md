@@ -14,7 +14,7 @@ Write terse replies. Don't echo transcripts or long logs. Fix things by editing 
 Every download has an automatic fallback. Sandboxes (claude.ai code execution, free or paid) usually block HuggingFace, Mixkit and the Google Fonts API, but allow GitHub:
 - transcription model: HuggingFace → GitHub mirror (whisper-base, then whisper-tiny)
 - music/SFX: Mixkit → GitHub mirror CC0 pack (ids look like `pack:lofi_chill`)
-- fonts: Google Fonts repo → jsDelivr → GitHub mirror OFL pack (37 families, covers every style family in look.py) → system font
+- fonts: Google Fonts repo → jsDelivr → GitHub mirror OFL pack (42 families, covers every style family in look.py) → system font
 - B-roll: Mixkit → none (use cards, or ask the user to upload clips)
 If setup prints "no network" / pip fails: the sandbox has network egress OFF. Tell the user exactly (one message):
 "claude.ai → Settings → Capabilities → Code execution → Network access: **All domains** (or add: pypi.org, files.pythonhosted.org, github.com, objects.githubusercontent.com, release-assets.githubusercontent.com, api.github.com, raw.githubusercontent.com, cdn.jsdelivr.net, huggingface.co, mixkit.co, assets.mixkit.co), then start a new chat and run /talking-head-short again." Don't attempt the edit without numpy/ffmpeg.

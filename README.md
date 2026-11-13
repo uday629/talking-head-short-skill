@@ -8,7 +8,7 @@ Give Claude a raw clip and type `/talking-head-short`. Claude then:
 3. **Asks before editing:** style, font pair, color palette, visual density, music choice, and B-roll on or off.
 4. **Builds the edit** from a small `spec.json`:
    - kinetic captions on a golden ratio (lead / KEY / accent) that are never cut off,
-   - 12 motion-graphic templates (compare, list, steps, counter, scale, cycle, timeline, quote, checklist, search, bars, statement),
+   - 14 motion-graphic templates (compare, list, steps, counter, scale, cycle, timeline, quote, checklist, search, bars, statement, flow, orbit) with auto-picked icons, plus a per-video look.py design system,
    - licensed B-roll, an eye-locked eased camera, smooth transitions, and color *correction* (not a filter).
 5. **Mixes the audio:** cleans the voice, adds licensed music ducked under speech (a musical phrase can land on your payoff line) and subtle SFX, and masters to -14 LUFS.
 6. **Runs QA:** a contact sheet of every caption/card end frame, a flash-frame scan, and a loudness check.
@@ -50,7 +50,7 @@ Sandboxes often block HuggingFace, Mixkit and the Google Fonts API, but allow Gi
 | ffmpeg | system | static build from PyPI (`imageio-ffmpeg`) |
 | speech-to-text | HuggingFace Whisper | `whisper-base.zip` / `whisper-tiny.zip` (MIT) |
 | music + SFX | Mixkit (free license) | `ths-pack.zip`: 8 tracks + 13 SFX, CC0 public domain (OpenGameArt) |
-| fonts | Google Fonts (GitHub API → jsDelivr) | `ths-fonts.zip`: 32 OFL families |
+| fonts | Google Fonts (GitHub API → jsDelivr) | `ths-fonts.zip`: 42 OFL families (covers every style family in look.py) |
 | B-roll | Mixkit stock video | motion-graphic cards instead (or upload your own clips) |
 
 Long renders are split into parts (`--part i/N`, then `--concat N`) to fit sandbox time limits. Rendering is CPU-heavy, so a laptop with Claude Code is much faster.
