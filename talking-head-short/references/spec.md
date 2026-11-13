@@ -48,6 +48,10 @@ Items may carry `"at": "phrase"` to land exactly on the spoken word. Without it,
 | timeline | title, items[{label,sub}] | tells a sequence over time |
 | quote | text, by | quotes someone / a key line |
 | search | title, query | "people google…", asks a question |
+| flow | title, items[{text,at,icon?}] (2–4) | describes a pipeline/funnel/flow ("income→expense", stages) — connected icon nodes with a traveling pulse |
+| orbit | title, items[{text,at}] (2–4) | a product/gadget/space being shown off — a rotating 3D wireframe with spec callouts landing on it |
+
+`list`/`cycle` items pick an icon automatically from the item text (money/time/people/growth/… → a matching line icon); pass `"icon": "dollar"` etc. yourself only to override. Icon names: dollar, clock, check, chart, bulb, heart, bell, flag, person, leaf, shield, mail, star.
 
 B-roll: a licensed clip (assets.py video) whose literal content matches the line. It is graded to match, pushes slowly, and keeps captions on top.
 

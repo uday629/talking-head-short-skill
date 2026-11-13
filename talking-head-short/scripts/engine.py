@@ -47,6 +47,13 @@ BGKIND = LOOK["bg"] if LOOK else "paper"
 UPCASE = {"key"} if (LOOK and LOOK.get("case") == "upper") else set()
 TRANS_ALIAS = {"push": "zoom", "whip": "zoom", "tilt3d": "zoom", "iris": "zoom", "peel": "blur", "glitch": "blur", "stamp": "pop",
                "parallax": "zoom", "orbit": "zoom", "mask": "blur"}
+# per-family motion mechanics (from look.py's `elements`) — this is what actually makes a "clean 2D vector" video
+# move differently from a "hand-drawn doodle" or "tech HUD" one, instead of only the colors changing.
+EL = (LOOK or {}).get("elements", {}) or dict(boil=0, stepped=0, shake=0, glow=0.3, shadow=1, grain=0.008, stroke=4, radius=22, halftone=0, tilt=0)
+STROKE_SCALE = max(0.4, EL.get("stroke", 4) / 4.0)
+RADIUS_SCALE = max(0.2, EL.get("radius", 22) / 22.0)
+GLOW_SCALE = EL.get("glow", 0.3) * 2.0
+TILT_DEG = EL.get("tilt", 0)
 
 class TL:
     def __init__(s, segs):
@@ -401,32 +408,41 @@ _rr = np.clip(np.sqrt(((_xx - W / 2) / 820) ** 2 + ((_yy - H * 0.45) / 1150) ** 
 LIGHT_CARD = float(0.2126 * CARD[0] + 0.7152 * CARD[1] + 0.0722 * CARD[2]) > 0.5
 INK = hexc(LOOK["colors"]["ink"]) if LOOK else (PAL["primary"] if LIGHT_CARD else TEXT)   # text color on cards
 
+_GR = EL.get("grain", 0.008)
+_dot = (((_xx.astype(int) % 7) < 2) & ((_yy.astype(int) % 7) < 2)).astype(np.float32)[..., None]   # halftone print texture
 def _card_bg():
     """card canvas texture, varied by LOOK['bg'] so each design family reads differently, not just re-tinted."""
     if BGKIND == "block":                           # flat, no grain/vignette — bold kinetic / UI blocks
-        return np.tile(CARD, (H, W, 1)).astype(np.float32)
-    if BGKIND == "grid":                             # tech HUD / blueprint — faint rule grid on a dark/blue field
+        out = np.tile(CARD, (H, W, 1)).astype(np.float32)
+    elif BGKIND == "grid":                           # tech HUD / blueprint — faint rule grid on a dark/blue field
         g = (CARD * (1.08 - 0.22 * _rr)).astype(np.float32)
         step = 72; ln = ((_xx.astype(int) % step < 2) | (_yy.astype(int) % step < 2)).astype(np.float32)[..., None]
-        return g + ln * ACC * 0.05 + _noise * 0.006
-    if BGKIND == "film":                             # documentary / noir — darker vignette, heavier grain
-        return (CARD * (1.0 - 0.42 * _rr) + _noise * 0.018).astype(np.float32)
-    if BGKIND == "mesh":                             # soft two-tone diagonal gradient — UI/glass
+        out = g + ln * ACC * 0.05 + _noise * _GR
+    elif BGKIND == "film":                           # documentary / noir — darker vignette, heavier grain
+        out = (CARD * (1.0 - 0.42 * _rr) + _noise * max(_GR, 0.014)).astype(np.float32)
+    elif BGKIND == "mesh":                           # soft two-tone diagonal gradient — UI/glass
         u = np.clip((_xx + _yy * 0.6) / (W + H * 0.6), 0, 1)[..., None]
-        return CARD * (1 - 0.22 * u) + SEC * 0.18 * u + _noise * 0.006
-    return (CARD * (1.12 - 0.30 * _rr) + _noise * 0.008).astype(np.float32)   # paper/frosted/solid/light default
+        out = CARD * (1 - 0.22 * u) + SEC * 0.18 * u + _noise * _GR
+    else:
+        out = (CARD * (1.12 - 0.30 * _rr) + _noise * _GR).astype(np.float32)   # paper/frosted/solid/light default
+    if EL.get("halftone"): out = out * (1 - _dot * 0.05)                        # papercraft print dots
+    return out
 CARD_BG = _card_bg()
 def C(c): return tuple(float(v) for v in c)
 def poly(img, pts, col, th, closed=False):
     if len(pts) < 2: return
+    th = max(1, round(th * STROKE_SCALE))    # family stroke weight: crisp 2px vector vs. a heavier hand-drawn/kinetic line
     p = np.round(np.asarray(pts, np.float64) * 16).astype(np.int32).reshape(-1, 1, 2)
     cv2.polylines(img, [p], closed, C(col), int(th), cv2.LINE_AA, shift=4)
-def circle(img, c, r, col, th=-1): cv2.circle(img, (int(c[0] * 16), int(c[1] * 16)), int(r * 16), C(col), int(th), cv2.LINE_AA, shift=4)
+def circle(img, c, r, col, th=-1): cv2.circle(img, (int(c[0] * 16), int(c[1] * 16)), int(r * 16), C(col), int(max(1, round(th * STROKE_SCALE)) if th > 0 else th), cv2.LINE_AA, shift=4)
 def part(pts, k): n = int(round(len(pts) * clamp(k))); return pts[:max(0, n)]
 def glow(fr, lay, amt=0.8, s=10):
+    amt = amt * GLOW_SCALE      # 0 for flat/vector families (no glow at all), strong for tech-HUD/blueprint
+    if amt <= 0.01: return
     sm = cv2.GaussianBlur(cv2.resize(lay, (W // 2, H // 2), interpolation=cv2.INTER_AREA), (0, 0), s / 2)
     fr += cv2.resize(sm, (W, H)) * amt
 def rrect(img, x0, y0, x1, y1, r, col, alpha=1.0):
+    r = r * RADIUS_SCALE         # sharp UI corners vs. soft glass-panel corners, per family
     m = np.zeros((int(y1 - y0) + 2, int(x1 - x0) + 2), np.uint8); r = int(r)
     cv2.rectangle(m, (r, 0), (m.shape[1] - r, m.shape[0]), 255, -1); cv2.rectangle(m, (0, r), (m.shape[1], m.shape[0] - r), 255, -1)
     for cx, cy in ((r, r), (m.shape[1] - r, r), (r, m.shape[0] - r), (m.shape[1] - r, m.shape[0] - r)): cv2.circle(m, (cx, cy), r, 255, -1, cv2.LINE_AA)
@@ -448,6 +464,102 @@ def item_times(card, items, a, b):
     return out
 def label(it): return it["text"] if isinstance(it, dict) else str(it)
 
+# ───────────────────────── icon kit — small vector line icons so "list of things" becomes an actual motion
+# graphic (an icon that animates in) instead of plain bulleted text. Drawn from the same poly/circle primitives
+# as everything else, so stroke weight / glow / radius already vary per LOOK family automatically.
+def _ic_dollar(fr, c, r, col, k):
+    circle(fr, c, r * k, col, max(2, r * 0.17))
+    poly(fr, [(c[0], c[1] - r * 0.6 * k), (c[0], c[1] + r * 0.6 * k)], col, max(2, r * 0.15))
+def _ic_clock(fr, c, r, col, k):
+    circle(fr, c, r * k, col, max(2, r * 0.15))
+    poly(fr, [(c[0], c[1]), (c[0], c[1] - r * 0.55 * k)], col, max(2, r * 0.15))
+    poly(fr, [(c[0], c[1]), (c[0] + r * 0.4 * k, c[1] + r * 0.12 * k)], col, max(2, r * 0.15))
+def _ic_check(fr, c, r, col, k):
+    pts = [(c[0] - r * 0.5, c[1]), (c[0] - r * 0.1, c[1] + r * 0.4), (c[0] + r * 0.55, c[1] - r * 0.45)]
+    poly(fr, part(pts, max(0.34, k)), col, max(2, r * 0.18))
+def _ic_chart(fr, c, r, col, k):
+    pts = [(c[0] - r * 0.7, c[1] + r * 0.3), (c[0] - r * 0.2, c[1] - r * 0.2), (c[0] + r * 0.2, c[1] + r * 0.05), (c[0] + r * 0.7, c[1] - r * 0.6)]
+    poly(fr, part(pts, k), col, max(2, r * 0.15))
+    if k > 0.9: poly(fr, [pts[-1], (pts[-1][0] - r * 0.35, pts[-1][1]), (pts[-1][0], pts[-1][1] + r * 0.35)], col, max(2, r * 0.13))
+def _ic_bulb(fr, c, r, col, k):
+    circle(fr, (c[0], c[1] - r * 0.1), r * 0.65 * k, col, max(2, r * 0.15))
+    poly(fr, [(c[0] - r * 0.25, c[1] + r * 0.55), (c[0] + r * 0.25, c[1] + r * 0.55)], col, max(2, r * 0.15))
+def _ic_heart(fr, c, r, col, k):
+    s = r * k
+    poly(fr, [(c[0], c[1] + s * 0.55), (c[0] - s * 0.8, c[1] - s * 0.05), (c[0] - s * 0.35, c[1] - s * 0.6),
+              (c[0], c[1] - s * 0.15), (c[0] + s * 0.35, c[1] - s * 0.6), (c[0] + s * 0.8, c[1] - s * 0.05), (c[0], c[1] + s * 0.55)], col, max(2, r * 0.15), True)
+def _ic_bell(fr, c, r, col, k):
+    s = r * k
+    poly(fr, [(c[0] - s * 0.55, c[1] + s * 0.25), (c[0] - s * 0.4, c[1] - s * 0.3), (c[0], c[1] - s * 0.65),
+              (c[0] + s * 0.4, c[1] - s * 0.3), (c[0] + s * 0.55, c[1] + s * 0.25)], col, max(2, r * 0.15))
+    poly(fr, [(c[0] - s * 0.7, c[1] + s * 0.25), (c[0] + s * 0.7, c[1] + s * 0.25)], col, max(2, r * 0.15))
+def _ic_flag(fr, c, r, col, k):
+    s = r * k
+    poly(fr, [(c[0] - s * 0.5, c[1] - s * 0.7), (c[0] - s * 0.5, c[1] + s * 0.7)], col, max(2, r * 0.15))
+    poly(fr, [(c[0] - s * 0.5, c[1] - s * 0.7), (c[0] + s * 0.5, c[1] - s * 0.45), (c[0] - s * 0.5, c[1] - s * 0.1)], col, max(2, r * 0.13), True)
+def _ic_person(fr, c, r, col, k):
+    circle(fr, (c[0], c[1] - r * 0.4 * k), r * 0.32 * k, col, max(2, r * 0.15))
+    poly(fr, part([(c[0] - r * 0.55, c[1] + r * 0.55), (c[0], c[1] - r * 0.05), (c[0] + r * 0.55, c[1] + r * 0.55)], max(0.34, k)), col, max(2, r * 0.15))
+def _ic_leaf(fr, c, r, col, k):
+    s = r * k
+    poly(fr, [(c[0] - s * 0.6, c[1] + s * 0.6), (c[0] + s * 0.1, c[1] - s * 0.1), (c[0] + s * 0.6, c[1] - s * 0.6)], col, max(2, r * 0.15))
+    circle(fr, (c[0] - s * 0.1, c[1] + s * 0.15), s * 0.4, col, max(2, r * 0.13))
+def _ic_shield(fr, c, r, col, k):
+    s = r * k
+    poly(fr, [(c[0], c[1] - s * 0.7), (c[0] + s * 0.55, c[1] - s * 0.4), (c[0] + s * 0.55, c[1] + s * 0.1), (c[0], c[1] + s * 0.7),
+              (c[0] - s * 0.55, c[1] + s * 0.1), (c[0] - s * 0.55, c[1] - s * 0.4)], col, max(2, r * 0.15), True)
+def _ic_mail(fr, c, r, col, k):
+    s = r * k
+    poly(fr, [(c[0] - s * 0.7, c[1] - s * 0.45), (c[0] + s * 0.7, c[1] - s * 0.45), (c[0] + s * 0.7, c[1] + s * 0.45), (c[0] - s * 0.7, c[1] + s * 0.45)], col, max(2, r * 0.13), True)
+    poly(fr, [(c[0] - s * 0.7, c[1] - s * 0.4), (c[0], c[1] + s * 0.1), (c[0] + s * 0.7, c[1] - s * 0.4)], col, max(2, r * 0.13))
+def _ic_star(fr, c, r, col, k):
+    pts = [(c[0] + r * k * math.cos(math.radians(-90 + 72 * i)), c[1] + r * k * math.sin(math.radians(-90 + 72 * i))) for i in range(5)]
+    order = [0, 2, 4, 1, 3, 0]
+    poly(fr, [pts[i] for i in order], col, max(2, r * 0.15), True)
+ICONS = dict(dollar=_ic_dollar, clock=_ic_clock, check=_ic_check, chart=_ic_chart, bulb=_ic_bulb, heart=_ic_heart,
+             bell=_ic_bell, flag=_ic_flag, person=_ic_person, leaf=_ic_leaf, shield=_ic_shield, mail=_ic_mail, star=_ic_star)
+_ICON_KW = {"dollar": "money price cost budget spend pay income revenue earn save dollar $ afford pricing",
+            "clock": "time month day week schedule deadline hour minute year monthly daily weekly every",
+            "check": "done complete habit correct yes checklist finish achieve",
+            "chart": "grow increase up more improve progress trend rise result performance",
+            "bulb": "idea think realize insight aware notice understand learn know",
+            "heart": "love care relationship feel connect trust bond family",
+            "bell": "remind notify alert warning reminder attention",
+            "flag": "goal target finish win milestone achieve aim",
+            "person": "people client customer you person someone audience buyer homeowner seller",
+            "leaf": "health nature calm growth organic wellness nutrition fresh",
+            "shield": "protect safe secure trust guard risk security",
+            "mail": "message email write post content blog letter reply",
+            "star": "star best favorite top rating quality excellent"}
+def fillshape(img, pts, col, alpha=1.0, pad=4):
+    """A filled, anti-aliased polygon — poly()/circle() are outline-only (deliberately, for the line-icon kit);
+    this is for the one solid glyph that needs it: the cursor arrow."""
+    xs, ys = [p[0] for p in pts], [p[1] for p in pts]
+    x0, y0, x1, y1 = min(xs) - pad, min(ys) - pad, max(xs) + pad, max(ys) + pad
+    w, h = int(x1 - x0), int(y1 - y0)
+    if w <= 0 or h <= 0: return
+    m = np.zeros((h, w), np.uint8)
+    p = np.array([[int((px - x0) * 8), int((py - y0) * 8)] for px, py in pts], np.int32)
+    cv2.fillPoly(m, [p], 255, cv2.LINE_AA, shift=3)
+    blit(img, m.astype(np.float32) / 255, int(x0), int(y0), col, alpha)
+
+def draw_cursor(fr, pos, col, click_k=0.0):
+    """A custom cursor arrow with a click-ripple — the Glassmorphism/SaaS family's signature mechanic."""
+    x, y = pos
+    fillshape(fr, [(x, y), (x, y + 26), (x + 7, y + 20), (x + 11, y + 29), (x + 15, y + 27), (x + 11, y + 18), (x + 19, y + 18)], col)
+    if click_k > 0:
+        r = 10 + 34 * eout(click_k)
+        circle(fr, (x + 3, y + 10), r, col, max(1, 5 * (1 - click_k)))
+
+def pick_icon(text, used=None):
+    words = set(norm(w) for w in text.split() if norm(w))     # whole-word match only — "posture" must not hit "post"
+    best, score = None, 0
+    for name, kws in _ICON_KW.items():
+        s = sum(1 for w in kws.split() if w in words)
+        if used and name in used: s -= 0.5
+        if s > score: best, score = name, s
+    return best
+
 # ───────────────────────── templates (all share palette + fonts; content area y≈300..1600)
 def T_statement(fr, t, c, d, a, b):
     cap = dict(lead=d.get("lead", "").split(), key=d["key"].split(), acc=d.get("acc", "").split(), la="rise", ka=c.get("anim", "rise"), aa="write",
@@ -464,8 +576,13 @@ def T_statement(fr, t, c, d, a, b):
 def T_list(fr, t, c, d, a, b, overlay=False):
     items = d["items"]; ts = item_times(c, items, a, b)
     size = d.get("size", 58 if overlay else 64); dy = size * 1.75
-    x0 = 120 if overlay else 170; y0 = (H * 0.56 if overlay else H * 0.5) - dy * (len(items) - 1) / 2
+    x0 = 120 if overlay else 190; y0 = (H * 0.56 if overlay else H * 0.5) - dy * (len(items) - 1) / 2
     fade = 1 - prog(t, b - 0.25, 0.25)
+    icons, used = [], set()                 # one auto-picked icon per item (not on overlay lists — kept minimal over the face)
+    for it in items:
+        ic = it.get("icon") if isinstance(it, dict) else None
+        ic = ic or (None if overlay else pick_icon(label(it), used))
+        icons.append(ic); used.add(ic)
     if overlay:
         m = np.exp(-(((_xx[:1, :] - 380) / 470) ** 2))[0][None, :, None] * np.exp(-(((_yy[:, :1] - (y0 + dy * (len(items) - 1) / 2)) / (dy * len(items) * 0.9)) ** 2))[..., None]
         fr *= 1 - m * 0.45 * smooth(prog(t, a, 0.3)) * fade
@@ -479,7 +596,9 @@ def T_list(fr, t, c, d, a, b, overlay=False):
         p = prog(t, ti - 0.05, 0.35)
         if p <= 0: continue
         cur = i == len(items) - 1 or t < ts[i + 1] - 0.05
-        circle(fr, (x0 - 40, y0 + i * dy - size * 0.32), 9 * bout(p, 1.6), ACC if cur else ACC * 0.65)
+        mcol = ACC if cur else ACC * 0.65
+        if icons[i]: ICONS[icons[i]](fr, (x0 - 56, y0 + i * dy - size * 0.28), 24, mcol, bout(p, 1.6))
+        else: circle(fr, (x0 - 40, y0 + i * dy - size * 0.32), 9 * bout(p, 1.6), mcol)
         text(fr, label(it), "lead", size, x0, y0 + i * dy, t, ti - 0.05, col if cur else col * 0.7 + (CARD if not overlay else 0) * 0.3, "l", "rise", fade)
 
 def T_compare(fr, t, c, d, a, b):
@@ -600,11 +719,20 @@ def T_search(fr, t, c, d, a, b):
         n = int(len(q) * clamp((t - t0) / max(0.3, min(1.8, b - t0 - 1.0)))); s = q[:n]
         if s: blit_text(fr, s, "lead", 44, x0 + 130, y + 16, ink)
         if int(t * 2.4) % 2 == 0: cw = sprite(s, "lead", 44)["tw"] if s else 0; cv2.rectangle(fr, (int(x0 + 136 + cw), int(y - 26)), (int(x0 + 140 + cw), int(y + 26)), C(ACC), -1)
+    if EL.get("cursor"):   # Glassmorphism/SaaS family: a cursor glides in and clicks the bar before typing starts
+        cu = clamp((t - (t0 - 0.9)) / 0.7)
+        if 0 < cu < 1.6:
+            cx, cy = x0 + (x1 - x0) * 0.78 + (1 - eout(min(1, cu))) * 260, y + 120 - eout(min(1, cu)) * 120
+            draw_cursor(fr, (cx, cy), ACC, clamp((t - t0 + 0.08) / 0.3) if abs(t - t0) < 0.4 else 0)
     if d.get("title"): text(fr, d["title"], "key", size_for_xh("key", 60), W / 2, y - 260, t, a + 0.15, INK, "c", "blur")
 
 def T_cycle(fr, t, c, d, a, b):
     items = d["items"]; ts = item_times(c, items, a, b); n = len(items); cx, cy, R = W / 2, H * 0.52, 300; lay = np.zeros_like(fr)
     ang = [math.radians(-90 + 360 * i / n) for i in range(n)]
+    icons, used = [], set()
+    for it in items:
+        ic = it.get("icon") if isinstance(it, dict) else None
+        ic = ic or pick_icon(label(it), used); icons.append(ic); used.add(ic)
     for i, (it, ti) in enumerate(zip(items, ts)):
         p = prog(t, ti - 0.05, 0.35); px, py = cx + R * math.cos(ang[i]), cy + R * math.sin(ang[i])
         nxt = ts[i + 1] if i + 1 < n else b - 0.4
@@ -612,9 +740,10 @@ def T_cycle(fr, t, c, d, a, b):
         arc = [(cx + R * math.cos(ang[i] + (2 * math.pi / n) * u), cy + R * math.sin(ang[i] + (2 * math.pi / n) * u)) for u in np.linspace(0.1, 0.9, 40)]
         seg = part(arc, k); poly(lay, seg, ACC * 0.8, 4)
         if p > 0:
-            circle(lay, (px, py), 16 * bout(p, 1.5), ACC)
+            circle(lay, (px, py), 26 * bout(p, 1.5), ACC)
+            if icons[i]: ICONS[icons[i]](fr, (px, py), 15, CARD if LIGHT_CARD else INK, 1.0)
             ox = 1 if math.cos(ang[i]) > 0.3 else (-1 if math.cos(ang[i]) < -0.3 else 0)
-            text(fr, label(it), "lead", 44, px + ox * 40, py + (12 if ox else (-40 if math.sin(ang[i]) < 0 else 80)), t, ti, INK, "l" if ox > 0 else ("r" if ox < 0 else "c"))
+            text(fr, label(it), "lead", 44, px + ox * 52, py + (12 if ox else (-56 if math.sin(ang[i]) < 0 else 94)), t, ti, INK, "l" if ox > 0 else ("r" if ox < 0 else "c"))
     glow(fr, lay, 0.8); fr += lay
     if d.get("center"): text(fr, d["center"], "key", size_for_xh("key", 52), cx, cy + 20, t, a + 0.2, INK, "c", "blur")
 
@@ -630,13 +759,75 @@ def T_timeline(fr, t, c, d, a, b):
         if isinstance(it, dict) and it.get("sub"): text(fr, it["sub"], "lead", 32, x, (y - 60 if top else y + 100) + 50, t, ti + 0.1, INK * 0.7, "c")
     if d.get("title"): text(fr, d["title"], "key", size_for_xh("key", 60), W / 2, 420, t, a + 0.15, INK, "c", "blur")
 
+def T_flow(fr, t, c, d, a, b):
+    """income→expense flow, a pipeline, a funnel — 2-4 stages connected by an animated line with a traveling pulse."""
+    items = d["items"]; n = len(items); ts = item_times(c, items, a, b)
+    icons, used = [], set()
+    for it in items:
+        ic = it.get("icon") if isinstance(it, dict) else None
+        ic = ic or pick_icon(label(it), used); icons.append(ic); used.add(ic)
+    margin = 210; xs = [margin + (W - 2 * margin) * i / max(1, n - 1) for i in range(n)]; y = H * 0.48; R = 58
+    lay = np.zeros_like(fr)
+    k = eio(prog(t, a + 0.15, max(0.3, ts[-1] - a))) * (n - 1)
+    for i in range(n - 1):
+        sp = clamp(k - i)
+        if sp > 0: poly(lay, [(xs[i], y), (xs[i] + (xs[i + 1] - xs[i]) * sp, y)], ACC * 0.7, 5)
+    if 0 < k < n - 1: circle(lay, (xs[0] + (xs[-1] - xs[0]) * k / max(1, n - 1), y), 10, ACC)
+    glow(fr, lay, 0.8); fr += lay
+    for i, (it, ti) in enumerate(zip(items, ts)):
+        p = prog(t, ti - 0.1, 0.4)
+        if p <= 0: continue
+        circle(fr, (xs[i], y), R * bout(p, 1.5), SEC * 0.3 + CARD * 0.7)
+        circle(fr, (xs[i], y), R * bout(p, 1.5), ACC, 4)
+        if icons[i]: ICONS[icons[i]](fr, (xs[i], y), R * 0.55, INK, 1.0)
+        text(fr, label(it), "lead", fit(label(it), "lead", 40, (W - 2 * margin) / n * 0.92), xs[i], y + R + 58, t, ti, INK, "c")
+    if d.get("title"): text(fr, d["title"], "key", size_for_xh("key", 58), W / 2, 340, t, a + 0.15, INK, "c", "blur")
+
+def draw_cube3d(fr, c, r, col, t, speed=0.5):
+    """A slowly orbiting wireframe cube — the vector-graphics stand-in for 'Cinematic Product 3D Showreel'
+    (photoreal 3D render/orbital camera is out of scope for an OpenCV renderer; this is the same mechanic:
+    a 3D object that keeps rotating while spec callouts land on it)."""
+    ang = t * speed; cy_, sy_ = math.cos(ang), math.sin(ang); cx_, sx_ = math.cos(0.5), math.sin(0.5)
+    pts3 = []
+    for x, y, z in [(-1, -1, -1), (1, -1, -1), (1, 1, -1), (-1, 1, -1), (-1, -1, 1), (1, -1, 1), (1, 1, 1), (-1, 1, 1)]:
+        x1, z1 = x * cy_ + z * sy_, -x * sy_ + z * cy_; y1, z2 = y * cx_ - z1 * sx_, y * sx_ + z1 * cx_
+        s = r / (3 - z2 * 0.4); pts3.append((c[0] + x1 * s, c[1] + y1 * s, z2))
+    edges = [(0, 1), (1, 2), (2, 3), (3, 0), (4, 5), (5, 6), (6, 7), (7, 4), (0, 4), (1, 5), (2, 6), (3, 7)]
+    for e0, e1 in sorted(edges, key=lambda e: -(pts3[e[0]][2] + pts3[e[1]][2])):
+        shade = 0.45 + 0.55 * clamp((pts3[e0][2] + pts3[e1][2] + 2) / 4)
+        poly(fr, [pts3[e0][:2], pts3[e1][:2]], col * shade, 3)
+
+def T_showreel(fr, t, c, d, a, b):
+    items = d.get("items", []); cx, cy, R = W / 2, H * 0.40, 190; n = max(1, len(items))
+    draw_cube3d(fr, (cx, cy), R * eout(prog(t, a, 0.5)), ACC, t - a)
+    ts = item_times(c, items, a, b)
+    for i, (it, ti) in enumerate(zip(items, ts)):
+        p = prog(t, ti - 0.05, 0.4)
+        if p <= 0: continue
+        ang = math.radians(-100 + i * (340 / n)); lx, ly = cx + (R + 230) * math.cos(ang), cy + (R + 230) * math.sin(ang)
+        px, py = cx + R * 0.95 * math.cos(ang), cy + R * 0.95 * math.sin(ang)
+        k = eio(p); poly(fr, [(px, py), (px + (lx - px) * k, py + (ly - py) * k)], ACC * 0.55, 2)
+        if k > 0.9: circle(fr, (px, py), 6, ACC); text(fr, label(it), "lead", 36, lx, ly + 10, t, ti, INK, "c")
+    if d.get("title"): text(fr, d["title"], "key", size_for_xh("key", 58), W / 2, H * 0.72, t, a + 0.3, INK, "c", "blur")
+
 TEMPL = dict(statement=T_statement, list=T_list, compare=T_compare, counter=T_counter, steps=T_steps, scale=T_scale, bars=T_bars,
-             quote=T_quote, checklist=T_checklist, search=T_search, cycle=T_cycle, timeline=T_timeline)
+             quote=T_quote, checklist=T_checklist, search=T_search, cycle=T_cycle, timeline=T_timeline, flow=T_flow, orbit=T_showreel)
 
 def card_frame(L, t):
-    fr = CARD_BG.copy(); TEMPL[L["type"]](fr, t, L, L.get("data", {}), L["a"], L["b"])
-    k = eio(prog(t, L["a"], L["b"] - L["a"])); z = 1.0 + 0.03 * k
-    M = np.array([[z, 0, W / 2 * (1 - z)], [0, z, H / 2 * (1 - z)]], np.float32)
+    ct = t
+    if EL.get("stepped"):                                # stop-motion / posterize-time feel (papercraft 8-12fps, doodle 12-15fps)
+        step = 1.0 / EL["stepped"]; ct = L["a"] + math.floor((t - L["a"]) / step) * step
+    fr = CARD_BG.copy(); TEMPL[L["type"]](fr, ct, L, L.get("data", {}), L["a"], L["b"])
+    k = eio(prog(ct, L["a"], L["b"] - L["a"])); z = 1.0 + 0.03 * k
+    ang = TILT_DEG * (1 if int(L["a"]) % 2 == 0 else -1)
+    dx = dy = 0.0
+    if EL.get("shake") and t < L["a"] + 0.22:            # kinetic camera shake on entrance
+        u = 1 - (t - L["a"]) / 0.22; h = hash((round(t * 90), id(L))) % 1000 / 500 - 1
+        dx, dy = h * 7 * u, (hash((round(t * 90) + 1, id(L))) % 1000 / 500 - 1) * 7 * u
+    if EL.get("boil"):                                    # hand-drawn frame-to-frame wobble
+        step = 1.0 / (EL["boil"] * 12); st = math.floor(t / step)
+        dx += (hash((st, id(L))) % 1000 / 500 - 1) * 1.6; dy += (hash((st + 1, id(L))) % 1000 / 500 - 1) * 1.6
+    M = cv2.getRotationMatrix2D((W / 2, H / 2), ang, z); M[0, 2] += dx; M[1, 2] += dy
     return cv2.warpAffine(fr, M, (W, H), flags=cv2.INTER_LINEAR, borderMode=cv2.BORDER_REFLECT)
 
 # ───────────────────────── caption layer on plates
