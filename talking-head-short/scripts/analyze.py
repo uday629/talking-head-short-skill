@@ -68,6 +68,31 @@ def bad_spans(words):
         if i and words[i]["s"] - words[i - 1]["e"] > 0.8: sugg.append(f"[pause {words[i-1]['e']}-{words[i]['s']}]")
     return spans, why, sugg
 
+def word_segments(words, remove, maxgap=0.34, pad_in=0.05, pad_out=0.10):
+    """Build the clean-cut timeline from word timestamps (merge consecutive words, cut only at real pauses ≥ maxgap
+    or inside an explicit `remove` span). Preferred over speech_segments(): a per-frame audio-energy gate is fooled
+    by room tone, HVAC hum, background music or an inconsistent mic level into reading mid-sentence as 'silence',
+    which was observed to fragment a continuous 37s talk into a dozen+ sub-second slivers on real footage — a
+    cut that bad is worse than leaving a long pause in. Word timing only ever disagrees with the real audio by
+    the ASR's own word-boundary error (tens of ms), never by seconds."""
+    if not words: return []
+    segs, cur = [], None
+    for w in words:
+        s, e = w["s"] - pad_in, w["e"] + pad_out
+        if cur and s - cur[1] < maxgap: cur[1] = max(cur[1], e)
+        else:
+            if cur: segs.append(cur)
+            cur = [s, e]
+    if cur: segs.append(cur)
+    for r0, r1 in sorted(remove):
+        out = []
+        for s0, e0 in segs:
+            if e0 <= r0 or s0 >= r1: out.append([s0, e0]); continue
+            if s0 < r0: out.append([s0, r0])
+            if e0 > r1: out.append([r1, e0])
+        segs = out
+    return [[round(max(0, s0), 3), round(e0, 3)] for s0, e0 in segs if e0 - s0 > 0.05]
+
 def speech_segments(wav, remove, maxgap=0.32, pad_in=0.06, pad_out=0.10):
     w = wave.open(wav); a = np.frombuffer(w.readframes(w.getnframes()), np.int16) / 32768; hop = 160
     n = len(a) // hop
@@ -136,7 +161,7 @@ def main():
         words = json.load(open(os.path.join(wd, "words.json"))) if os.path.exists(os.path.join(wd, "words.json")) else []
     spans, why, sugg = bad_spans(words)
     if "--remove" in sys.argv: spans += json.loads(sys.argv[sys.argv.index("--remove") + 1]); why.append("+manual")
-    segs = speech_segments(wav, spans)
+    segs = word_segments(words, spans) if words else speech_segments(wav, spans)   # word timing is reliable; the audio-energy gate is only a fallback for when there's no transcript at all
     P.update(face_eye(raw, P)); P["raw"] = os.path.abspath(raw); json.dump(P, open(os.path.join(wd, "probe.json"), "w"))
     json.dump(segs, open(os.path.join(wd, "segments.json"), "w"))
     grid(raw, P, os.path.join(wd, "frames.jpg"))

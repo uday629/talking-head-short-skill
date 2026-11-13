@@ -510,7 +510,7 @@ def T_counter(fr, t, c, d, a, b):
     t0 = phrase_time(d["at"], hint=a - 0.3) if d.get("at") else a + 0.4; t0 = clamp(t0, a + 0.3, b - 1.2)
     p = eout(prog(t, t0, d.get("dur", 0.9))); v = d.get("from", 0) + (d["to"] - d.get("from", 0)) * p
     s = f"{d.get('prefix','')}{v:,.{d.get('decimals',0)}f}{d.get('suffix','')}"
-    KS = size_for_xh("key", 150); w = sprite(s, "key", KS)["tw"]
+    KS = fit(s, "key", size_for_xh("key", 150), 0.84 * W); w = sprite(s, "key", KS)["tw"]   # long suffix ("800 words") must still fit the frame
     if p > 0: blit_text(fr, s, "key", KS, W / 2 - w / 2, H * 0.52, ACC)
     k = p; R = 330; arc = [(W / 2 + R * math.cos(math.radians(-90 + 360 * u)), H * 0.47 + R * math.sin(math.radians(-90 + 360 * u))) for u in np.linspace(0, 1, 140)]
     lay = np.zeros_like(fr); poly(lay, arc, DIM * 0.5, 4); poly(lay, part(arc, k), ACC, 6)
