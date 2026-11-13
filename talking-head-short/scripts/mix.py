@@ -76,7 +76,7 @@ for L in E.CARDS: sfx("in", L["a"] - 0.22, -26); sfx("out", L["b"] - 0.1, -30)
 for B in E.BROLL: sfx("in", B["a"] - 0.22, -28)
 for L in E.CARDS + E.OVERS:
     d = L.get("data", {})
-    if L["type"] in ("list", "checklist", "steps", "cycle", "timeline") and d.get("items"):
+    if L["type"] in ("list", "checklist", "steps", "cycle", "timeline", "flow", "orbit", "icons", "warn", "pop", "badge") and d.get("items"):
         for tt in E.item_times(L, d["items"], L["a"], L["b"]): sfx("item", tt - 0.02, -31, 0.4)
 if A.get("payoff"): sfx("payoff", E.phrase_time(A["payoff"], hint=0), -27, 2.0)
 for x in A.get("sfx_extra", []): place(mix, fade(load(x["file"])[:int(x.get("len", 2) * SR)], 0.004, 0.12), E.phrase_time(x["at"], hint=0), x.get("db", -26))

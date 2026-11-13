@@ -15,7 +15,7 @@ Keep it short. Times come from the transcript automatically: you write **words**
  "segments": null,                                // optional override; default = segments.json from analyze
  "captions": [ CAPTION, ... ],                    // in spoken order
  "cards":    [ CARD, ... ],                       // full-screen motion graphics (in spoken order)
- "overlays": [ {"type": "list", "at": [...], "data": {...}} ],   // list drawn over the face
+ "overlays": [ OVERLAY, ... ],                    // meaning-graphics ON the face plate (see OVERLAY below)
  "broll":    [ {"file": "video_123.mp4", "at": ["phrase start", "phrase end"], "offset": 0, "speed": 1.0, "in": "dissolve"} ],
  "audio": {"music": "music_22.mp3", "music_offset": "auto", "music_db": -18, "payoff": "phrase", "voice": "clean|podcast",
            "sfx": {"in": "sfx_a.mp3", "out": "sfx_b.mp3", "item": "sfx_c.mp3", "payoff": "sfx_d.mp3"},
@@ -50,6 +50,7 @@ Items may carry `"at": "phrase"` to land exactly on the spoken word. Without it,
 | search | title, query | "people google…", asks a question |
 | flow | title, items[{text,at,icon?}] (2–4) | describes a pipeline/funnel/flow ("income→expense", stages) — connected icon nodes with a traveling pulse |
 | orbit | title, items[{text,at}] (2–4) | a product/gadget/space being shown off — a rotating 3D wireframe with spec callouts landing on it |
+| calendar | year, month, highlight[days], start_dow 0–6, days, title | talks about weeks/months/a year/a date |
 
 `list`/`cycle` items pick an icon automatically from the item text (money/time/people/growth/… → a matching line icon); pass `"icon": "dollar"` etc. yourself only to override. Icon names: dollar, clock, check, chart, bulb, heart, bell, flag, person, leaf, shield, mail, star.
 
@@ -61,3 +62,20 @@ B-roll: a licensed clip (assets.py video) whose literal content matches the line
 - Cards snap off raw cut points; back-to-back cards chain. A card ends where the next beat starts.
 - Eye-locked camera with an eased zoom across cuts; the zoom never drops below the frame-fill minimum.
 - Text auto-fits the frame width; the scrim adapts to background brightness.
+
+## OVERLAY (drawn on the speaker's shot; captions stay; one at a time — `--plan` flags overlaps)
+`{"type": T, "at": ["first words", "last words"], "hold": 0.3, "data": {...}}` — every item carries `"at": "phrase"` so it lands on its word.
+| type | data | when the voice says… (see references/visual_lexicon.md) |
+|---|---|---|
+| badge | items[{value, label, count, chart, side l/r, tone, at}] | a money amount / price / stat — glass card beside the head, value counts up if `count` |
+| rain | to, from, prefix, suffix, n | big or escalating money — bills fall, amount rolls on the chest |
+| trend | dir up/down, icons[...], dur | growth / scale / results (up) or decline (down, red) — line draws behind the speaker |
+| tally | icon, to, from, prefix, suffix, label, at | views / followers / reach — icon + rolling number on the chest |
+| icons | items[{text, icon, tone, at}], y | a spoken list addressed to camera — tiles accumulate on the chest |
+| warn | items[{text, at}], y | problems / pain points — red warning pills stack |
+| ring | tone problem/solution, tag, r | stress / pressure on the person (red) or protection / support (accent) — ring draws around the head |
+| pop | items[{icon, text, tone, at}] | a meaning word: best→crown, love→heart, idea→bulb, system→gear, people→people, social→phone, goal→target |
+| viewfinder | — | only when the topic literally is filming/recording |
+
+Caption marks: `"strike": true` (red line through the key after it lands — failing/negation), `"circle": true` (hand-drawn loop around the key — one emphasis word).
+Icon names: dollar, coin, clock, calendar, check, chart, arrow_up, bulb, heart, bell, flag, person, people, leaf, shield, mail, star, crown, gear, eye, warn, phone, target.
